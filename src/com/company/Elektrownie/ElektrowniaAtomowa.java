@@ -104,6 +104,9 @@ public class ElektrowniaAtomowa extends Elektrownia {
     public int getKiedyDokupic() { return kiedyDokupic; }
 
     public void setKiedyDokupic(int kiedyDokupic) { this.kiedyDokupic = kiedyDokupic; }
+    public float uzupelnij(){
+        return  this.IloscOdpadow * this.OdbiorcaOdpadow.getCenaZaTone();
+    }
 
     public int getPojemnoscMagazynu() {
         return pojemnoscMagazynu;
@@ -120,6 +123,9 @@ public class ElektrowniaAtomowa extends Elektrownia {
                 "\nZuzycieWody: " + ZuzycieWody +
                 "\nIloscOdpadow: " + IloscOdpadow +
                 "\nOdbiorcaOdpadow: " + OdbiorcaOdpadow;
+    }
+    public String  typ(){
+        return "atomowa";
     }
 
     @Override

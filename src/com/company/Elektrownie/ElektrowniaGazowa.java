@@ -50,13 +50,18 @@ public class ElektrowniaGazowa extends ElektrowniaNaPaliwoStale  {
 		MaxPojemnoscMagazynu = maxPojemnoscMagazynu;
 	}
 
-
+	public float uzupelnij(){
+		return (this.MaxPojemnoscMagazynu-this.IloscGazuWMagazynie)*this.DostawcaGazu.getCenaZaM3();
+	}
 	@Override
 	public String toString() {
 		return "ElektrowniaGazowa:" + super.toString() +
 				"\nIloscGazuWMagazynie: " + IloscGazuWMagazynie +
 				"\nDostawcaGazu: " + DostawcaGazu.toString() +
 				"\nMaksymalna pojemność magazynu: " + MaxPojemnoscMagazynu;
+	}
+	public String  typ(){
+		return "gazowa";
 	}
 
 	@Override

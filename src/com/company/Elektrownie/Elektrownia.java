@@ -222,6 +222,9 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	public void setKiedyDokupic(int kiedyDokupic) {
 		this.kiedyDokupic = kiedyDokupic;
 	}
+	public float uzupelnij(){
+		return 0;
+	}
 
 	public ReakcjaNaAwarieZasilania getReakcjaNaAwarieZasilania() {
 		return reakcjaNaAwarieZasilania;
@@ -258,26 +261,10 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	{
 		 return "\nNazwa: " + nazwa +"\nMiasto: " + miasto + "\nmoc chwilowa: " + MocChwilowa + "\nmoc maksymalna: " + MocMaksymalna + "\nliczba pracownikow: " + LiczbaPracownikow + "\nczy pracuje: " + czyPracuje + " \nwlasciciel elektrowni:\t\t" + wlasciciel  + "\npracownicy: " + Arrays.toString(pracownicy) + "\nDystrybutor: " + Dystrybutor.toString();
 	}
-	
-	public void RozpoczeciePracy(){
-		if(czyPracuje) {
-			System.out.println("\nElektrownia już pracuje\n");
-		}else {
-			System.out.println("\nElektrownia zaczyna pracowac\n");
-			this.setCzyPracuje(true);
 
-		}
+	public String  typ(){
+		return "elektrownia";
 	}
-	
-	public void ZatrzymaniePracy(){
-		if(czyPracuje) {
-			System.out.println("\nElektrownia kończy prace\n");
-			this.setCzyPracuje(false);
-		}else {
-			System.out.println("\nElektrownia zaczyna pracowac\n");
 
-
-		}
-	}
 
 }

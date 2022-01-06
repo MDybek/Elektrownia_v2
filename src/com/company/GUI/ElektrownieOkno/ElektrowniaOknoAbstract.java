@@ -73,7 +73,7 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
     ImageIcon info;
     ImageIcon newInfo;
 
-    public ElektrowniaOknoAbstract(Elektrownia elektrownia, Gracz gracz) {
+    public ElektrowniaOknoAbstract(Elektrownia elektrownia) {
 
         //USTAWIENIA RAMKI
         this.setPreferredSize(new Dimension(900,600));

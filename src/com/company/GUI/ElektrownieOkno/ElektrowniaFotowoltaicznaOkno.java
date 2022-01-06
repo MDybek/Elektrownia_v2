@@ -8,8 +8,8 @@ import com.company.Head.*;
 
 public class ElektrowniaFotowoltaicznaOkno extends ElektrowniaOknoAbstract {
 
-    public ElektrowniaFotowoltaicznaOkno(Elektrownia elektrownia, Gracz gracz) {
-        super(elektrownia, gracz);
+    public ElektrowniaFotowoltaicznaOkno(Elektrownia elektrownia) {
+        super(elektrownia);
         //skrot("Zuzycie paneli", "0%",informacje);
         magazyn.removeAll();
         kiedyDokupic.removeAll();

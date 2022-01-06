@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class ElektrowniaGazowaOkno extends ElektrowniaOknoAbstract {
 
-    public ElektrowniaGazowaOkno(Elektrownia elektrownia, Gracz gracz) {
-        super(elektrownia, gracz);
+    public ElektrowniaGazowaOkno(Elektrownia elektrownia) {
+        super(elektrownia);
         skrot(stanMagazynuLabel, "Stan magazynu", "nieznany",informacje);
         skrot(uzupelnianieLabel, "Cena uzupelnienia magazynu", "420",informacje);
     }

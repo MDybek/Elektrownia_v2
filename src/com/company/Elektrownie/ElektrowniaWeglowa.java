@@ -55,6 +55,9 @@ public class ElektrowniaWeglowa extends ElektrowniaNaPaliwoStale  {
     public void setMaxPojemnoscMagazynu(float maxPojemnoscMagazynu) {
         MaxPojemnoscMagazynu = maxPojemnoscMagazynu;
     }
+    public float uzupelnij(){
+        return (this.getMaxPojemnoscMagazynu()-this.IloscWeglaWMagazynie)*this.DostawcaWegla.getCenaZaTone();
+    }
 
     @Override
     public String toString() {
@@ -62,6 +65,9 @@ public class ElektrowniaWeglowa extends ElektrowniaNaPaliwoStale  {
                 "\nDostawcaWegla: " + DostawcaWegla.toString() +
                 "\nIloscWeglaWMagazynie: " + IloscWeglaWMagazynie +
                 "\nMaksymalna Pojemność Magazynu: " + MaxPojemnoscMagazynu;
+    }
+    public String  typ(){
+        return "weglowa";
     }
 
     @Override
