@@ -20,6 +20,7 @@ public class ListaEle extends JPanel implements ActionListener {
     JPanel dol;
 
     ListaEle(int szer, int wys,String title, Gracz g, String typ){
+
         //USTAWIENIA PANELU
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(szer,wys));
@@ -45,7 +46,7 @@ public class ListaEle extends JPanel implements ActionListener {
         //USTAWIENIA PANELU Z PRZYCISKAMI
         panelPrzyciskow = new JPanel();
         this.add(Box.createRigidArea(new Dimension(0,130)));
-        panelPrzyciskow.setPreferredSize(new Dimension(szer,160));
+        panelPrzyciskow.setLayout(new GridLayout());
 
         //DODANIE PRZYCISKÓW DO PANELU
         for(Kafelek button : g.getListaPrzyciskow()){
@@ -53,11 +54,9 @@ public class ListaEle extends JPanel implements ActionListener {
                 panelPrzyciskow.add(button);
             }
         }
+        JScrollPane scrollPane = new JScrollPane(panelPrzyciskow,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-
-        panelPrzyciskow.setLayout(new GridLayout());
-
-        this.add(panelPrzyciskow);
+        this.add(scrollPane);
         this.add(Box.createRigidArea(new Dimension(0,120)));
 
         //DOLNY PANEL

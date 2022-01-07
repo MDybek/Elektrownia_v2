@@ -50,6 +50,7 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         cena.setAlignmentX(CENTER_ALIGNMENT);
 
         this.setEnabled(false);
+        this.setPreferredSize(new Dimension(200,200));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(Box.createRigidArea(new Dimension(0,10)));
         this.add(nazwa);
