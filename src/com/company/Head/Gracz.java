@@ -5,26 +5,30 @@ import com.company.GUI.Kafelek;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Gracz implements Serializable {
     public static float balans;
-    private ArrayList <Kafelek> listaElektrowni;
+    private ArrayList <Kafelek> listaPrzyciskow;
     private static final long serialVersionUID = 1L;
     ListyElektrowni listyElektrowni = new ListyElektrowni();
 
     public Gracz() {
         balans = 1000000f;
-        listaElektrowni = new ArrayList<>();
+        listaPrzyciskow = new ArrayList<>();
         for (Elektrownia e : listyElektrowni.elektrownie){
-            listaElektrowni.add(new Kafelek(e));
+            listaPrzyciskow.add(new Kafelek(e));
         }
+    }
+    public Gracz(ArrayList<Kafelek> lista,float Balans){
+        balans = Balans;
+        listaPrzyciskow = new ArrayList<>();
+        setListaPrzyciskow(lista);
     }
 
 
     public void sprzedazElektrowni(int nrEle,int indeks,Elektrownia e) {
-        listaElektrowni.set(nrEle*5+indeks, null);
+        listaPrzyciskow.set(nrEle*5+indeks, null);
     }
 
     public float getBalans() {
@@ -36,11 +40,11 @@ public class Gracz implements Serializable {
     }
 
     public ArrayList<Kafelek> getListaPrzyciskow() {
-        return listaElektrowni;
+        return listaPrzyciskow;
     }
 
     public void setListaPrzyciskow(ArrayList<Kafelek> listaElektrowni) {
-        this.listaElektrowni = listaElektrowni;
+        this.listaPrzyciskow = listaElektrowni;
     }
 
     public void odejmijBalans(float x) {this.balans -= x;}

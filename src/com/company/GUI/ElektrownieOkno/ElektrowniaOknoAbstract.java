@@ -331,12 +331,8 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         parent.add(label);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == sprzedajButton){
 
-        }
-        this.revalidate();
-        this.repaint();
+    public void actionPerformed(ActionEvent e) {
     }
     public void stateChanged(ChangeEvent e){
         if (e.getSource() == mocSlider) {

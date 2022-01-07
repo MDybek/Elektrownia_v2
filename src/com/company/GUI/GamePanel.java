@@ -1,5 +1,4 @@
 package com.company.GUI;
-import com.company.Elektrownie.*;
 import com.company.GUI.ElektrownieOkno.*;
 import com.company.Head.Gracz;
 import com.company.Head.Serializacja;
@@ -8,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
@@ -18,7 +16,6 @@ public class GamePanel extends JPanel implements ActionListener {
     Gracz gracz;
     Menue menu;
     Gra gra;
-    ListyElektrowni listyElektrowni;
     ListaEle listaAtom;
     ListaEle listaWegiel;
     ListaEle listaGaz;
@@ -28,16 +25,8 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(width, height));
 
         new OknoFrame();
-        gracz = new Gracz();
-
         menu = new Menue(width, height);
-        gra = new Gra(width, height, gracz);
-
-        listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
-        listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
-        listaWegiel = new ListaEle(width, height, "weglowych", gracz, "weglowa");
-        listaGaz = new ListaEle(width, height, "gazowych", gracz, "gazowa");
-
+        gra = new Gra(width, height);
 
         menu.nowaGra.addActionListener(this);
         menu.wczytajGre.addActionListener(this);
@@ -48,38 +37,40 @@ public class GamePanel extends JPanel implements ActionListener {
         gra.gazowa.addActionListener(this);
         gra.fotowoltaiczna.addActionListener(this);
         gra.nastepnyDzien.addActionListener(this);
-
-        listaAtom.powrot.addActionListener(this);
-        listaFoto.powrot.addActionListener(this);
-        listaWegiel.powrot.addActionListener(this);
-        listaGaz.powrot.addActionListener(this);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         serializacje = new Serializacja();
         if (e.getSource() == menu.nowaGra) {
+            gracz = new Gracz();
+            listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
+            listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
+            listaWegiel = new ListaEle(width, height, "weglowych", gracz, "weglowa");
+            listaGaz = new ListaEle(width, height, "gazowych", gracz, "gazowa");
+
+            listaAtom.powrot.addActionListener(this);
+            listaFoto.powrot.addActionListener(this);
+            listaWegiel.powrot.addActionListener(this);
+            listaGaz.powrot.addActionListener(this);
             this.remove(menu);
             this.add(gra, BorderLayout.CENTER);
         }
-        /*
         else if(e.getSource()==menu.wczytajGre){
             System.out.println("Otwieram zapisana gre...");
             this.remove(menu);
+            gracz = new Gracz(serializacje.odczyt(),serializacje.odczytStanuKonta());
+            listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
+            listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
+            listaWegiel = new ListaEle(width, height, "weglowych", gracz, "weglowa");
+            listaGaz = new ListaEle(width, height, "gazowych", gracz, "gazowa");
 
-            gracz.setListaElektrowni(serializacje.odczyt());
-            gracz.setBalans(serializacje.odczytStanuKonta());
-            listaAtom.uzupelnijKupione(0,gracz);
-            listaFoto.uzupelnijKupione(1,gracz);
-            listaWegiel.uzupelnijKupione(2,gracz);
-            listaGaz.uzupelnijKupione(3,gracz);
-            //otworz zapisana
+            listaAtom.powrot.addActionListener(this);
+            listaFoto.powrot.addActionListener(this);
+            listaWegiel.powrot.addActionListener(this);
+            listaGaz.powrot.addActionListener(this);
             this.add(gra, BorderLayout.CENTER);
-            zaktualizujStanKonta();
         }
-
-         */
         else if (e.getSource() == menu.zakoncz) {
             System.exit(0);
         } else if (e.getSource() == gra.atomowa) {
@@ -111,32 +102,30 @@ public class GamePanel extends JPanel implements ActionListener {
 
                      */
                     gracz.dodajBalans(k.ele.ObliczDochod(k.ele));
-
+                    gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
                 }
             }
-            //serializacje.zapis((ArrayList<Elektrownia>) gracz.getListaElektrowni());
-            //serializacje.zapisStanuKonta(gracz.getBalans());
-            //zaktualizujStanKonta();
+            serializacje.zapis(gracz.getListaPrzyciskow());
+            serializacje.zapisStanuKonta(Gracz.balans);
         }
         //-------------------------------------------------------------------------
-        if (e.getSource() == listaAtom.powrot) {
+        else if (e.getSource() == listaAtom.powrot) {
             this.remove(listaAtom);
             add(gra, BorderLayout.CENTER);
-            gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
         }
-        if (e.getSource() == listaFoto.powrot) {
+        else if (e.getSource() == listaFoto.powrot) {
             this.remove(listaFoto);
             add(gra, BorderLayout.CENTER);
-            gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
-        } else if (e.getSource() == listaWegiel.powrot) {
+        }
+        else if (e.getSource() == listaWegiel.powrot) {
             this.remove(listaWegiel);
             add(gra, BorderLayout.CENTER);
-            gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
-        } else if (e.getSource() == listaGaz.powrot) {
+        }
+        else if (e.getSource() == listaGaz.powrot) {
             this.remove(listaGaz);
             add(gra, BorderLayout.CENTER);
-            gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
         }
+        gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
 
         this.revalidate();
         this.repaint();

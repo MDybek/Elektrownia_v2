@@ -97,7 +97,6 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             kup.setVisible(false);
             cena.setVisible(false);
             this.setEnabled(true);
-            ListaEle.stanKonta.setText("Stan konta: " + Gracz.balans);
         }else if(e.getSource() == kup && Gracz.balans < ele.getCenaZakupu()){
             JOptionPane.showMessageDialog(null,"Nie stać cię biedaku!","Komunikat",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -157,7 +156,6 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             ele.setReakcjaNaAwarieZasilania(new Sposob2ReakcjaNaAwarieZasilania());
         }
 
-        ListaEle.stanKonta.setText("Stan konta: " + Gracz.balans); //działa bo stan konta jest static, nie wiem czy tak można
         OknoFrame.frame.revalidate();
         OknoFrame.frame.repaint();
         

@@ -74,44 +74,13 @@ public class ListaEle extends JPanel implements ActionListener {
         dol.add(powrot);
         this.add(dol);
 
-
-
     }
-
-/*
-    public void uzupelnijKupione(int indeks, Gracz g){
-        for(int i = indeks*5;i<(indeks*5)+5;i++){
-            if(g.getListaElektrowni().get(i) != null){
-                kup.get(i%5).setVisible(false);
-                cena.get(i%5).setVisible(false);
-                przyciski.get(i%5).setEnabled(true);
-            }else{
-                przyciski.get(i%5).setEnabled(false);
-                kup.get(i%5).setVisible(true);
-                cena.get(i%5).setVisible(true);
-            }
+    public static void update(float stan){
+        if (!stanKonta.getText().equals("Stan konta: " + stan)){
+            stanKonta.setText("Stan konta: " + stan);
         }
     }
 
- */
-
-/*
-    public void nowyBlok(int indeks){
-        elektrownie.get(indeks).setLiczbaBlokow(elektrownie.get(indeks).getLiczbaBlokow() + 1);
-    }
-
-    public void dodatkowyPracownik(int indeks){
-        elektrownie.get(indeks).setLiczbaPracownikow(elektrownie.get(indeks).getLiczbaPracownikow() + 1);
-    }
-
-    public void zolnionyPracownik(int indeks){
-        elektrownie.get(indeks).setLiczbaPracownikow(elektrownie.get(indeks).getLiczbaPracownikow() - 1);
-    }
-    public void komunikat(){
-        JOptionPane.showMessageDialog(null,"Nie stać cię biedaku!","Komunikat",JOptionPane.INFORMATION_MESSAGE);
-    }
-
- */
 
     @Override
     public void actionPerformed(ActionEvent e) {
