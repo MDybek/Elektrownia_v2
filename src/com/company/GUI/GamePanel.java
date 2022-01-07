@@ -16,10 +16,10 @@ public class GamePanel extends JPanel implements ActionListener {
     Gracz gracz;
     Menue menu;
     Gra gra;
-    ListaEle listaAtom;
-    ListaEle listaWegiel;
-    ListaEle listaGaz;
-    ListaEle listaFoto;
+    static ListaEle listaAtom;
+    static ListaEle listaWegiel;
+    static ListaEle listaGaz;
+    static ListaEle listaFoto;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(width, height));

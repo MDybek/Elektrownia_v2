@@ -155,7 +155,10 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         }else if (e.getSource() == okno.awaria2){
             ele.setReakcjaNaAwarieZasilania(new Sposob2ReakcjaNaAwarieZasilania());
         }
-
+        GamePanel.listaAtom.update(Gracz.balans);
+        GamePanel.listaWegiel.update(Gracz.balans);
+        GamePanel.listaGaz.update(Gracz.balans);
+        GamePanel.listaFoto.update(Gracz.balans);
         OknoFrame.frame.revalidate();
         OknoFrame.frame.repaint();
         

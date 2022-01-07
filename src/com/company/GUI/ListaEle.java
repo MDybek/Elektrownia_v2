@@ -13,7 +13,7 @@ public class ListaEle extends JPanel implements ActionListener {
 
     private int liczbaEle = 0;
     JLabel tytul;
-    public static JLabel stanKonta;
+    public JLabel stanKonta;
 
     JPanel panelPrzyciskow;
     JButton powrot;
@@ -75,9 +75,9 @@ public class ListaEle extends JPanel implements ActionListener {
         this.add(dol);
 
     }
-    public static void update(float stan){
-        if (!stanKonta.getText().equals("Stan konta: " + stan)){
-            stanKonta.setText("Stan konta: " + stan);
+    void update(float stan){
+        if (!this.stanKonta.getText().equals("Stan konta: " + stan)){
+            this.stanKonta.setText("Stan konta: " + stan);
         }
     }
 
