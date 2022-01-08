@@ -1,6 +1,4 @@
 package com.company.uslugodawcy;
-
-import com.company.Elektrownie.ElektrowniaAtomowa;
 import com.company.Head.Wlasciciel;
 
 import java.io.Serializable;
@@ -20,13 +18,6 @@ public class OdbiorcaOdpadow implements Serializable {
         this.CenaZaTone = CenaZaTone;
         this.Wlasciciel = Wlasciciel;
     }
-
-    public static void WywiezOdpady(ElektrowniaAtomowa elA) {
-        elA.setIloscOdpadow(0f);
-        System.out.println("\nOdpady zostaly wywiezione\n");
-    }
-
-
     public float getCenaZaTone() { return CenaZaTone; }
 
     public void setCenaZaTone(float cenaZaTone) { CenaZaTone = cenaZaTone; }

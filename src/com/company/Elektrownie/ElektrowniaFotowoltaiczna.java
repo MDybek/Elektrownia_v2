@@ -39,13 +39,6 @@ public class ElektrowniaFotowoltaiczna extends Elektrownia {
 		ZuzyciePaneli = zuzyciePaneli;
 	}
 
-	//Metody klasy
-	public void WymienPanele()
-	{
-		
-		this.setZuzyciePaneli(0);
-	}
-
 	@Override
 	public String toString() {
 		return "ElektrowniaFotowoltaiczna: " + super.toString() +

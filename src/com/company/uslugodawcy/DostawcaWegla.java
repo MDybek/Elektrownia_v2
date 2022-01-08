@@ -1,6 +1,4 @@
 package com.company.uslugodawcy;
-
-import com.company.Elektrownie.ElektrowniaWeglowa;
 import com.company.Head.Wlasciciel;
 
 import java.io.Serializable;
@@ -22,15 +20,6 @@ public class DostawcaWegla implements Serializable {
 		this.Wlasciciel = Wlasciciel;
 	}
 
-	//---------------------------------------------------	
-	
-	public static void Dostawa(ElektrowniaWeglowa e) {
-		e.setIloscWeglaWMagazynie(e.getMaxPojemnoscMagazynu());
-	}
-	
-	
-	
-	//---------------------------------------------------
 	public float getCenaZaTone() {
 		return CenaZaTone;
 	}

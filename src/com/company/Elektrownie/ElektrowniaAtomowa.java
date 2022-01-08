@@ -60,13 +60,6 @@ public class ElektrowniaAtomowa extends Elektrownia {
             setZuzycieWody(getZuzycieWody()-10f);
         }
     }
-
-    public void WywozOdpadow() {
-        if (IloscOdpadow > 0)
-            OdbiorcaOdpadow.WywiezOdpady(this);
-    }
-
-
     //metody get i set
     public int getLiczbaReaktorow() {
         return LiczbaReaktorow;

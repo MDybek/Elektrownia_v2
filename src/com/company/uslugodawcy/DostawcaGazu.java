@@ -1,7 +1,5 @@
 package com.company.uslugodawcy;
 
-
-import com.company.Elektrownie.ElektrowniaGazowa;
 import com.company.Head.Wlasciciel;
 
 import java.io.Serializable;
@@ -22,16 +20,6 @@ public class DostawcaGazu implements Serializable {
 		this.Wlasciciel = Wlasciciel;
 	}
 
-	//---------------------------------------------------	
-	
-	public static void Dostawa(ElektrowniaGazowa e) {
-		e.setIloscGazuWMagazynie(e.getMaxPojemnoscMagazynu());
-	}
-	
-	
-	
-	//---------------------------------------------------
-	
 	public float getCenaZaM3() {
 		return CenaZaM3;
 	}

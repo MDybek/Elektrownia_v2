@@ -19,16 +19,13 @@ public class DystrybutorPradu implements Serializable {
         this.CenaSkupu = CenaSkupu;
         this.Wlasciciel = Wlasciciel;
     }
-
-    public static void KupPrad() { System.out.println("Prad kupiony"); }
-
     public float getCenaSkupu() { return CenaSkupu; }
 
     public void setCenaSkupu(float cenaSkupu) { CenaSkupu = cenaSkupu; }
 
-    public com.company.Head.Wlasciciel getWlasciciel() { return Wlasciciel; }
+    public Wlasciciel getWlasciciel() { return Wlasciciel; }
 
-    public void setWlasciciel(com.company.Head.Wlasciciel wlasciciel) { Wlasciciel = wlasciciel; }
+    public void setWlasciciel(Wlasciciel wlasciciel) { Wlasciciel = wlasciciel; }
 
     @Override
     public String toString() {
