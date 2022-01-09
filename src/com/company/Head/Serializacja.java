@@ -1,11 +1,9 @@
 package com.company.Head;
 
-import com.company.Elektrownie.Elektrownia;
 import com.company.GUI.Kafelek;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Serializacja {
 
@@ -38,7 +36,6 @@ public class Serializacja {
 
     public void zapisStanuKonta(float stan) {
         try(ObjectOutputStream so = new ObjectOutputStream(new FileOutputStream("StanKontaGracza.ser"))) {
-
             so.writeObject(stan);
         }
         catch (IOException e) {
@@ -47,8 +44,6 @@ public class Serializacja {
     }
 
     public float odczytStanuKonta() {
-
-
         try (ObjectInputStream is = new ObjectInputStream(new FileInputStream("StanKontaGracza.ser"))) {
 
             Object obj1 = is.readObject();
@@ -60,7 +55,25 @@ public class Serializacja {
             e.printStackTrace();
             return 0;
         }
+    }
+    public void zapisDni(int dni){
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("dni.ser"))){
+            os.writeObject(dni);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public int odczytDni(){
+        try(ObjectInputStream is = new ObjectInputStream(new FileInputStream("dni.ser"))){
+            Object obt = is.readObject();
+            is.close();
+            return (int)obt;
+
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 }
 

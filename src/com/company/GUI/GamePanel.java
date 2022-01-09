@@ -12,6 +12,7 @@ import java.util.Random;
 public class GamePanel extends JPanel implements ActionListener {
     final int width = 942;
     final int height = 628;
+    static int dni;
     Serializacja serializacje;
     Gracz gracz;
     Menue menu;
@@ -43,6 +44,7 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         serializacje = new Serializacja();
         if (e.getSource() == menu.nowaGra) {
+            dni = 0;
             gracz = new Gracz();
             listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
             listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
@@ -59,6 +61,8 @@ public class GamePanel extends JPanel implements ActionListener {
         else if(e.getSource()==menu.wczytajGre){
             System.out.println("Otwieram zapisana gre...");
             this.remove(menu);
+            dni = serializacje.odczytDni();
+            gra.dni.setText("Dzień: " + dni);
             gracz = new Gracz(serializacje.odczyt(),serializacje.odczytStanuKonta());
             listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
             listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
@@ -105,6 +109,9 @@ public class GamePanel extends JPanel implements ActionListener {
                     gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
                 }
             }
+            dni +=1;
+            gra.dni.setText("Dzień: " + dni);
+            serializacje.zapisDni(dni);
             serializacje.zapis(gracz.getListaPrzyciskow());
             serializacje.zapisStanuKonta(Gracz.balans);
         }

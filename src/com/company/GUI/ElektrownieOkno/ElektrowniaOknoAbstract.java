@@ -1,8 +1,8 @@
 package com.company.GUI.ElektrownieOkno;
 
+import com.company.AtakTerro.*;
+import com.company.Awarie.*;
 import com.company.Elektrownie.Elektrownia;
-import com.company.GUI.ListaEle;
-import com.company.Head.Gracz;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -10,8 +10,6 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 //NIE DZIALA AKTUALIZOWANIE SIE DANYCH PO NACISNIECIU PRZYCISKOW KUP/SPRZEDAJ ITD
 
@@ -168,13 +166,16 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         atak1 = new JRadioButton("Sposób1");
         atak2 = new JRadioButton("Sposób2");
         grupaAtak = new ButtonGroup();
-        if (elektrownia.getSposobNaReakcjeNaAtak() == 0){
+
+        if (elektrownia.getReakcjeNaAtakTerrorystyczny() instanceof BrakReakcjiNaAtak){
             atakBrak.setSelected(true);
-        }else if (elektrownia.getSposobNaReakcjeNaAtak() == 1){
+        }else if (elektrownia.getReakcjeNaAtakTerrorystyczny() instanceof Sposob1ReakcjaNaAtakTerrorystyczny){
             atak1.setSelected(true);
         }else {
             atak2.setSelected(true);
         }
+
+
         radia(atakBrak,atak1,atak2,grupaAtak,reakcjaNaAtak);
 
         //PANEL REAKCJI NA AWARIĘ
@@ -186,9 +187,10 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         awaria1 = new JRadioButton("Sposób1");
         awaria2 = new JRadioButton("Sposób2");
         grupaAwaria = new ButtonGroup();
-        if (elektrownia.getSposobNaReakcjeNaAwarie() == 0){
+
+        if (elektrownia.getReakcjaNaAwarieZasilania() instanceof BrakReakcjiNaAwarie){
             awariaBrak.setSelected(true);
-        }else if (elektrownia.getSposobNaReakcjeNaAwarie() == 1){
+        }else if (elektrownia.getReakcjaNaAwarieZasilania() instanceof Sposob1ReakcjaNaAwarieZasilania){
             awaria1.setSelected(true);
         }else {
             awaria2.setSelected(true);

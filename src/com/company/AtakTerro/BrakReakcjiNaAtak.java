@@ -3,9 +3,10 @@ package com.company.AtakTerro;
 import com.company.Elektrownie.Elektrownia;
 import com.company.Head.Gracz;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class BrakReakcjiNaAtak implements ReakcjeNaAtakTerrorystyczny{
+public class BrakReakcjiNaAtak implements ReakcjeNaAtakTerrorystyczny, Serializable {
     @Override
     public void ReakcjaNaAtakTerrorystyczny(Elektrownia e, Gracz g) {
         Random random = new Random();

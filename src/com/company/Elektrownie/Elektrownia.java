@@ -1,8 +1,10 @@
 package com.company.Elektrownie;
 
+import com.company.AtakTerro.BrakReakcjiNaAtak;
 import com.company.AtakTerro.ReakcjeNaAtakTerrorystyczny;
 import com.company.AtakTerro.Sposob1ReakcjaNaAtakTerrorystyczny;
 import com.company.AtakTerro.Sposob2ReakcjaNaAtakTerrorystyczny;
+import com.company.Awarie.BrakReakcjiNaAwarie;
 import com.company.Awarie.ReakcjaNaAwarieZasilania;
 import com.company.Awarie.Sposob1ReakcjaNaAwarieZasilania;
 import com.company.Awarie.Sposob2ReakcjaNaAwarieZasilania;
@@ -29,8 +31,6 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	private boolean czyPracuje;
 	private Pracownicy pracownicy[];
 	private DystrybutorPradu Dystrybutor;
-	private int sposobNaReakcjeNaAwarie;
-	private int sposobNaReakcjeNaAtak;
 	private int kiedyDokupic;
 	private int cenaZakupu;
 	private int cenaSprzedazy;
@@ -51,14 +51,12 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 		czyPracuje = false;
 		wlasciciel = new Wlasciciel();
 		Dystrybutor = new DystrybutorPradu();
-		sposobNaReakcjeNaAwarie = 0;
-		sposobNaReakcjeNaAtak = 0;
 		cenaZakupu = 0;
 		cenaSprzedazy = 0;
 		cenaBloku = 0;
 	}
 	
-	public Elektrownia(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow, boolean czyPracuje, Wlasciciel wlasciciel, DystrybutorPradu Dystrybutor, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int sposobNaReakcjeNaAwarie,int sposobNaReakcjeNaAtak,int kiedyDokupic)
+	public Elektrownia(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow, boolean czyPracuje, Wlasciciel wlasciciel, DystrybutorPradu Dystrybutor, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic)
 	{
 		this.nazwa = nazwa;
 		this.miasto = miasto;
@@ -70,53 +68,16 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 		this.czyPracuje = czyPracuje;
 		this.pracownicy = new Pracownicy[getLiczbaPracownikow()];
 		this.Dystrybutor = Dystrybutor;
-		this.sposobNaReakcjeNaAwarie = sposobNaReakcjeNaAwarie;
-		this.sposobNaReakcjeNaAtak = sposobNaReakcjeNaAtak;
 		this.kiedyDokupic = kiedyDokupic;
 		this.cenaZakupu = cenaZakupu;
 		this.cenaSprzedazy = cenaSprzedazy;
 		this.cenaBloku = cenaBloku;
-
-		if (sposobNaReakcjeNaAwarie == 0){
-			reakcjaNaAwarieZasilania = new Sposob1ReakcjaNaAwarieZasilania();
-		}else if (sposobNaReakcjeNaAwarie == 1){
-			reakcjaNaAwarieZasilania = new Sposob1ReakcjaNaAwarieZasilania();
-		}else {
-			reakcjaNaAwarieZasilania = new Sposob2ReakcjaNaAwarieZasilania();
-		}
-
-		if(sposobNaReakcjeNaAtak == 0){
-			reakcjeNaAtakTerrorystyczny = new Sposob1ReakcjaNaAtakTerrorystyczny();
-		}else if(sposobNaReakcjeNaAtak == 1){
-			reakcjeNaAtakTerrorystyczny = new Sposob1ReakcjaNaAtakTerrorystyczny();
-		}else {
-			reakcjeNaAtakTerrorystyczny = new Sposob2ReakcjaNaAtakTerrorystyczny();
-		}
-
-
+		reakcjaNaAwarieZasilania = new BrakReakcjiNaAwarie();
+		reakcjeNaAtakTerrorystyczny = new BrakReakcjiNaAtak();
 
 		for(int i = 0; i<pracownicy.length;i++){
 			pracownicy[i] = new Pracownicy();
 		}
-	}
-
-	public void odswiezReakcje(){
-		if (sposobNaReakcjeNaAwarie == 0){
-			reakcjaNaAwarieZasilania = new Sposob1ReakcjaNaAwarieZasilania();
-		}else if (sposobNaReakcjeNaAwarie == 1){
-			reakcjaNaAwarieZasilania = new Sposob1ReakcjaNaAwarieZasilania();
-		}else {
-			reakcjaNaAwarieZasilania = new Sposob2ReakcjaNaAwarieZasilania();
-		}
-
-		if(sposobNaReakcjeNaAtak == 0){
-			reakcjeNaAtakTerrorystyczny = new Sposob1ReakcjaNaAtakTerrorystyczny();
-		}else if(sposobNaReakcjeNaAtak == 1){
-			reakcjeNaAtakTerrorystyczny = new Sposob1ReakcjaNaAtakTerrorystyczny();
-		}else {
-			reakcjeNaAtakTerrorystyczny = new Sposob2ReakcjaNaAtakTerrorystyczny();
-		}
-
 	}
 
 	public int getLiczbaBlokow() { return liczbaBlokow; }
@@ -194,14 +155,6 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	public void setNazwa(String nazwa) {
 		this.nazwa = nazwa;
 	}
-
-	public int getSposobNaReakcjeNaAwarie() { return sposobNaReakcjeNaAwarie; }
-
-	public void setSposobNaReakcjeNaAwarie(int sposobNaReakcjeNaAwarie) { this.sposobNaReakcjeNaAwarie = sposobNaReakcjeNaAwarie; }
-
-	public int getSposobNaReakcjeNaAtak() { return sposobNaReakcjeNaAtak; }
-
-	public void setSposobNaReakcjeNaAtak(int sposobNaReakcjeNaAtak) { this.sposobNaReakcjeNaAtak = sposobNaReakcjeNaAtak; }
 
 	public int getCenaZakupu() { return cenaZakupu; }
 

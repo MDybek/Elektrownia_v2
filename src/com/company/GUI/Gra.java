@@ -14,6 +14,7 @@ public class Gra extends JPanel{
     JButton gazowa;
     JButton fotowoltaiczna;
     JButton nastepnyDzien;
+    public JLabel dni;
 
     Gra(int szer, int wys){
         this.setPreferredSize(new Dimension(szer,wys));
@@ -21,11 +22,13 @@ public class Gra extends JPanel{
         tlo = new JLabel();
         tlo.setIcon(plansza);
         this.add(tlo);
-
+        //stan konta
         stan_konta = new JLabel("Aktualny stan konta: " + Gracz.balans);
         stan_konta.setBounds(300, 5, 500, 30);
         stan_konta.setFont(new Font("Arial black", Font.BOLD, 20));
-
+        //dni
+        dni = new JLabel("Dzień: "+ GamePanel.dni);
+        dni.setBounds(0,0,50,50);
 
         //atomowa
         ImageIcon Atomowa = new ImageIcon("Atomowa_v2.png");
@@ -62,6 +65,7 @@ public class Gra extends JPanel{
         tlo.add(weglowa);
         tlo.add(gazowa);
         tlo.add(fotowoltaiczna);
+        tlo.add(dni);
         tlo.add(nastepnyDzien);
         tlo.add(stan_konta);
     }

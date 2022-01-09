@@ -34,9 +34,9 @@ public class ElektrowniaAtomowa extends Elektrownia {
     }
 
 
-    public ElektrowniaAtomowa(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna,int liczbaBlokow, int LiczbaPracownikow, Wlasciciel wlasciciel, boolean czyPracuje, int LiczbaReaktorow, float ZuzycieWody, DystrybutorPradu Dystrybutor, float IloscOdpadow,int pojemnoscMagazynu, OdbiorcaOdpadow OdbiorcaOdpadow, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int sposobNaReakcjeNaAwarie,int sposobNaReakcjeNaAtak,int kiedyDokupic){
+    public ElektrowniaAtomowa(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna,int liczbaBlokow, int LiczbaPracownikow, Wlasciciel wlasciciel, boolean czyPracuje, int LiczbaReaktorow, float ZuzycieWody, DystrybutorPradu Dystrybutor, float IloscOdpadow,int pojemnoscMagazynu, OdbiorcaOdpadow OdbiorcaOdpadow, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic){
 
-        super(nazwa, miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, czyPracuje, wlasciciel, Dystrybutor, cenaZakupu, cenaSprzedazy, cenaBloku,sposobNaReakcjeNaAwarie, sposobNaReakcjeNaAtak, kiedyDokupic);
+        super(nazwa, miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, czyPracuje, wlasciciel, Dystrybutor, cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic);
         this.LiczbaReaktorow = LiczbaReaktorow;
         this.ZuzycieWody = ZuzycieWody;
         this.IloscOdpadow = IloscOdpadow;
