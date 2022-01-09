@@ -1,19 +1,15 @@
 package com.company.Elektrownie;
-import com.company.AtakTerro.Sposob2ReakcjaNaAtakTerrorystyczny;
-import com.company.Awarie.Sposob1ReakcjaNaAwarieZasilania;
 import com.company.Dochod.DochodAtomowa;
 import com.company.Head.Wlasciciel;
 import com.company.uslugodawcy.DystrybutorPradu;
 import com.company.uslugodawcy.OdbiorcaOdpadow;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ElektrowniaAtomowa extends Elektrownia {
 
     private int LiczbaReaktorow;
     private float ZuzycieWody;
-    private float IloscOdpadow;
     private int kiedyDokupic;
     private int pojemnoscMagazynu;
     private com.company.uslugodawcy.OdbiorcaOdpadow OdbiorcaOdpadow;
@@ -34,32 +30,18 @@ public class ElektrowniaAtomowa extends Elektrownia {
     }
 
 
-    public ElektrowniaAtomowa(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna,int liczbaBlokow, int LiczbaPracownikow, Wlasciciel wlasciciel, boolean czyPracuje, int LiczbaReaktorow, float ZuzycieWody, DystrybutorPradu Dystrybutor, float IloscOdpadow,int pojemnoscMagazynu, OdbiorcaOdpadow OdbiorcaOdpadow, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic){
+    public ElektrowniaAtomowa(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna,int liczbaBlokow, int LiczbaPracownikow, Wlasciciel wlasciciel, boolean czyPracuje, int LiczbaReaktorow,
+                              float ZuzycieWody, DystrybutorPradu Dystrybutor, int stanMagazynu,int pojemnoscMagazynu, OdbiorcaOdpadow OdbiorcaOdpadow, int cenaZakupu, int cenaSprzedazy,
+                              int cenaBloku,int kiedyDokupic){
 
-        super(nazwa, miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, czyPracuje, wlasciciel, Dystrybutor, cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic);
+        super(nazwa, miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, czyPracuje, wlasciciel, Dystrybutor, cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic,stanMagazynu,pojemnoscMagazynu);
         this.LiczbaReaktorow = LiczbaReaktorow;
         this.ZuzycieWody = ZuzycieWody;
-        this.IloscOdpadow = IloscOdpadow;
         this.OdbiorcaOdpadow = OdbiorcaOdpadow;
         this.kiedyDokupic = kiedyDokupic;
-        this.pojemnoscMagazynu = pojemnoscMagazynu;
         this.obliczDochodElektrowni = new DochodAtomowa();
     }
 
-    public void ZwiekszMoc() {
-        if(getMocChwilowa()<getMocMaksymalna()){
-            setMocChwilowa(getMocChwilowa()+1);
-            setZuzycieWody(getZuzycieWody()+10f);
-        }
-        System.out.println("Moc zostala zwiekszona");
-    }
-
-    public void ZmniejszMoc() {
-        if(getMocChwilowa()>0 && getZuzycieWody()>10){
-            setMocChwilowa(getMocChwilowa()-1);
-            setZuzycieWody(getZuzycieWody()-10f);
-        }
-    }
     //metody get i set
     public int getLiczbaReaktorow() {
         return LiczbaReaktorow;
@@ -78,13 +60,6 @@ public class ElektrowniaAtomowa extends Elektrownia {
     }
 
 
-    public float getIloscOdpadow() {
-        return IloscOdpadow;
-    }
-
-    public void setIloscOdpadow(float iloscOdpadow) {
-        IloscOdpadow = iloscOdpadow;
-    }
 
     public com.company.uslugodawcy.OdbiorcaOdpadow getOdbiorcaOdpadow() {
         return OdbiorcaOdpadow;
@@ -98,8 +73,9 @@ public class ElektrowniaAtomowa extends Elektrownia {
 
     public void setKiedyDokupic(int kiedyDokupic) { this.kiedyDokupic = kiedyDokupic; }
     public float uzupelnij(){
-        return  this.IloscOdpadow * this.OdbiorcaOdpadow.getCenaZaTone();
+        return  this.getStanMagazynu() * this.OdbiorcaOdpadow.getCenaZaTone();
     }
+
 
     public int getPojemnoscMagazynu() {
         return pojemnoscMagazynu;
@@ -114,7 +90,6 @@ public class ElektrowniaAtomowa extends Elektrownia {
         return "ElektrowniaAtomowa:" + super.toString() +
                 "\nLiczbaReaktorow: " + LiczbaReaktorow +
                 "\nZuzycieWody: " + ZuzycieWody +
-                "\nIloscOdpadow: " + IloscOdpadow +
                 "\nOdbiorcaOdpadow: " + OdbiorcaOdpadow;
     }
     public String  typ(){

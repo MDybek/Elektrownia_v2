@@ -116,7 +116,7 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         else if(e.getSource() == okno.kupBloki){
             Gracz.balans -= ele.getCenaBloku();
             ele.setLiczbaBlokow(ele.getLiczbaBlokow() + 1);
-            okno.mocMaksymalnaLabel.setText("<html><div style='text-align: center;'> Moc maksymalna elektrowni: <br> " + String.valueOf(Integer.valueOf(ele.getMocMaksymalna())) +"<html>");
+            okno.mocMaksymalnaLabel.setText("<html><div style='text-align: center;'> Moc maksymalna elektrowni: <br> " + ele.getMocMaksymalna() +"<html>");
             okno.liczbaBlokowLabel.setText("<html><div style='text-align: center;'> Liczba blokow elektrowni: <br> " + ele.getLiczbaBlokow() +"<html>");
             odswierzSlider();
         }
@@ -133,8 +133,8 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         }
         else if(e.getSource() == okno.dokupButton){
             Gracz.balans -= ele.uzupelnij();
-            //rodzaj.uzupelnienieMagazynu(indeksEle%5);    dodać do konstuktora głównego stan magazynu
-            //okno.stanMagazynuLabel.setText("<html><div style='text-align: center;'> Stan magazynu: <br> " + "maks" +"<html>");
+            ele.setStanMagazynu(ele.getPojemnoscMagazynu());
+            okno.stanMagazynuLabel.setText("<html><div style='text-align: center;'> Stan magazynu: <br> " +ele.getStanMagazynu() +"<html>");
         }
         else if(e.getSource() == okno.zapiszIZamknij) {
             //dodać serializacje

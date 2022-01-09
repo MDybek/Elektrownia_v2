@@ -32,6 +32,8 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	private Pracownicy pracownicy[];
 	private DystrybutorPradu Dystrybutor;
 	private int kiedyDokupic;
+	private int stanMagazynu;
+	private int pojemnoscMagazynu;
 	private int cenaZakupu;
 	private int cenaSprzedazy;
 	private int cenaBloku;
@@ -56,7 +58,9 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 		cenaBloku = 0;
 	}
 	
-	public Elektrownia(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow, boolean czyPracuje, Wlasciciel wlasciciel, DystrybutorPradu Dystrybutor, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic)
+	public Elektrownia(String nazwa, String miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow, boolean czyPracuje,
+					   Wlasciciel wlasciciel, DystrybutorPradu Dystrybutor, int cenaZakupu, int cenaSprzedazy, int cenaBloku,
+					   int kiedyDokupic,int stanMagazynu, int pojemnoscMagazynu)
 	{
 		this.nazwa = nazwa;
 		this.miasto = miasto;
@@ -69,6 +73,8 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 		this.pracownicy = new Pracownicy[getLiczbaPracownikow()];
 		this.Dystrybutor = Dystrybutor;
 		this.kiedyDokupic = kiedyDokupic;
+		this.stanMagazynu = stanMagazynu;
+		this.pojemnoscMagazynu = pojemnoscMagazynu;
 		this.cenaZakupu = cenaZakupu;
 		this.cenaSprzedazy = cenaSprzedazy;
 		this.cenaBloku = cenaBloku;
@@ -175,6 +181,23 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	public void setKiedyDokupic(int kiedyDokupic) {
 		this.kiedyDokupic = kiedyDokupic;
 	}
+
+	public int getStanMagazynu() {
+		return stanMagazynu;
+	}
+
+	public void setStanMagazynu(int stanMagazynu) {
+		this.stanMagazynu = stanMagazynu;
+	}
+
+	public int getPojemnoscMagazynu() {
+		return pojemnoscMagazynu;
+	}
+
+	public void setPojemnoscMagazynu(int pojemnoscMagazynu) {
+		this.pojemnoscMagazynu = pojemnoscMagazynu;
+	}
+
 	public float uzupelnij(){
 		return 0;
 	}

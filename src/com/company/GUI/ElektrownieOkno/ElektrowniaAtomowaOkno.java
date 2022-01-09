@@ -7,7 +7,7 @@ import com.company.Head.Gracz;
 public class ElektrowniaAtomowaOkno extends ElektrowniaOknoAbstract{
     public ElektrowniaAtomowaOkno(Elektrownia e){
         super(e);
-        skrot(stanMagazynuLabel, "Stan magazynu", String.valueOf(((ElektrowniaAtomowa) e).getIloscOdpadow()),informacje);
+        skrot(stanMagazynuLabel, "Stan magazynu", String.valueOf((e.getStanMagazynu())),informacje);
         skrot(uzupelnianieLabel, "Cena wywozu odpadow", "420",informacje);
     }
 }

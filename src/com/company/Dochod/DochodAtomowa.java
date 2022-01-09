@@ -14,16 +14,16 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
     @Override
     public float ObliczDochod(Elektrownia e) {
         e.setMocMaksymalna(e.getLiczbaBlokow()*((ElektrowniaAtomowa) e).getLiczbaReaktorow()*EnegiaProdukowanaPrzezReaktor);
-        if(((ElektrowniaAtomowa) e).getIloscOdpadow()*100/((ElektrowniaAtomowa) e).getPojemnoscMagazynu() < e.getKiedyDokupic()){
-            ((ElektrowniaAtomowa) e).setIloscOdpadow(0);
+        if(((ElektrowniaAtomowa) e).getStanMagazynu()*100/((ElektrowniaAtomowa) e).getPojemnoscMagazynu() < e.getKiedyDokupic()){
+            ((ElektrowniaAtomowa) e).setStanMagazynu(0);
             return
                     //przychod
                     e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24
                             //wydatki
                             - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getZuzycieWody()*cenaWody
                             - e.getLiczbaPracownikow()*StawkaGodzinowa*24
-                            - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getIloscOdpadow()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone()
-                            - ((ElektrowniaAtomowa) e).getIloscOdpadow()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
+                            - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone()
+                            - ((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
         }
 
         return
@@ -35,6 +35,6 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
                         //na pracownikow
                 - e.getLiczbaPracownikow()*StawkaGodzinowa*24 //9600
                         //na odbior odpadow
-                - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getIloscOdpadow()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
+                - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
     }//11400
 }

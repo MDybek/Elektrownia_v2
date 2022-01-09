@@ -16,8 +16,8 @@ public class DochodWeglowa implements ObliczDochodElektrowni, Serializable {
     public float ObliczDochod(Elektrownia e){
 
         e.setMocMaksymalna(e.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
-        if(((ElektrowniaWeglowa) e).getIloscWeglaWMagazynie()*100/((ElektrowniaWeglowa) e).getMaxPojemnoscMagazynu() < ((ElektrowniaWeglowa) e).getKiedyDokupic()){
-            ((ElektrowniaWeglowa) e).setIloscWeglaWMagazynie(((ElektrowniaWeglowa) e).getMaxPojemnoscMagazynu());
+        if(((ElektrowniaWeglowa) e).getStanMagazynu()*100/((ElektrowniaWeglowa) e).getStanMagazynu() < ((ElektrowniaWeglowa) e).getKiedyDokupic()){
+            ((ElektrowniaWeglowa) e).setStanMagazynu(((ElektrowniaWeglowa) e).getPojemnoscMagazynu());
             return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24  // dochód
                     //wydatki na wegiel
                     - e.getMocChwilowa()*((ElektrowniaWeglowa) e).getZuzyciePaliwa()*((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone()
@@ -25,7 +25,7 @@ public class DochodWeglowa implements ObliczDochodElektrowni, Serializable {
                     -e.getLiczbaPracownikow()*StawkaGodzinowa*24
                     //wydatki na kary emisyjne
                     -IloscCO2*e.getMocChwilowa()*OplataEmisyjna
-                    -((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone()*(((ElektrowniaWeglowa) e).getMaxPojemnoscMagazynu()-((ElektrowniaWeglowa) e).getIloscWeglaWMagazynie());
+                    -((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone()*(((ElektrowniaWeglowa) e).getPojemnoscMagazynu()-((ElektrowniaWeglowa) e).getStanMagazynu());
         }
         return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24  // dochód //19980
                 //wydatki na wegiel

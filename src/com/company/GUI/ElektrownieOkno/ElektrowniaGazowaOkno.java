@@ -10,7 +10,7 @@ public class ElektrowniaGazowaOkno extends ElektrowniaOknoAbstract {
 
     public ElektrowniaGazowaOkno(Elektrownia elektrownia) {
         super(elektrownia);
-        skrot(stanMagazynuLabel, "Stan magazynu", "nieznany",informacje);
+        skrot(stanMagazynuLabel, "Stan magazynu", String.valueOf(elektrownia.getStanMagazynu()),informacje);
         skrot(uzupelnianieLabel, "Cena uzupelnienia magazynu", "420",informacje);
     }
 }
