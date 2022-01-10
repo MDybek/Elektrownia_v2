@@ -131,8 +131,8 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             okno.liczbaPracownikowLabel.setText("<html><div style='text-align: center;'> Liczba pracowników elektrowni: <br> " + ele.getLiczbaPracownikow() +"<html>");
             odswierzSlider();
         }
-        else if(e.getSource() == okno.dokupButton && Gracz.balans > ele.getCenaZakupu()){
-            Gracz.balans -= ele.uzupelnij();
+        else if(e.getSource() == okno.dokupButton && Gracz.balans > ele.getCenaZakupu() && ele.getStanMagazynu() != ele.getPojemnoscMagazynu()){
+            Gracz.balans -= ele.getPojemnoscMagazynu() - ele.getStanMagazynu();
             ele.setStanMagazynu(ele.getPojemnoscMagazynu());
             okno.stanMagazynuLabel.setText("<html><div style='text-align: center;'> Stan magazynu: <br> " +ele.getStanMagazynu() +"<html>");
         }

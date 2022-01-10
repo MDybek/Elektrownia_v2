@@ -1,4 +1,5 @@
 package com.company.GUI;
+import com.company.Elektrownie.Elektrownia;
 import com.company.GUI.ElektrownieOkno.*;
 import com.company.Head.Gracz;
 import com.company.Head.Serializacja;
@@ -103,7 +104,12 @@ public class GamePanel extends JPanel implements ActionListener {
                         k.ele.ReakcjeNaAwarieZasilania(k.ele);
                         awariaNotification(k.ele.getMiasto());
                     }
-
+                    k.ele.setStanMagazynu(k.ele.getStanMagazynu() - 20); //// nie wiem jakie jest zuzycie dzienne elektrowni
+                    if(k.ele.getKiedyDokupic() > k.ele.getStanMagazynu()){
+                        k.ele.setStanMagazynu(k.ele.getPojemnoscMagazynu());
+                        gracz.odejmijBalans(420);
+                    }
+                    k.okno.stanMagazynuLabel.setText("<html><div style='text-align: center;'> Stan magazynu: <br> " +k.ele.getStanMagazynu() +"<html>");
                     gracz.dodajBalans(k.ele.ObliczDochod(k.ele));
                     gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
                 }
