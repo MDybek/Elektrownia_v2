@@ -140,13 +140,13 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements  ChangeL
         pracownicy.add(zatrudnijPracownika);
         pracownicy.add(zwolnijPracownika);
 
-        //PANEL WEGLA
+        //PANEL DOKUP
         magazyn = new JPanel();
-        kafelek(magazyn,Color.blue,"STAN MAGAZYNU",podstawoweAkcje);
-        //DOKUP BUTTON
         magazyn.setBackground(new Color(80, 90, 100));
-        dokupButton = new JButton();
-        pojedynczyPrzycisk(dokupButton,"DOKUP", magazyn, Color.green);
+        magazyn.setLayout(new FlowLayout());
+        magazyn.add(Box.createRigidArea(new Dimension(0,50)));
+        podstawoweAkcje.add(magazyn);
+
 
         //PANEL SPRZEDAJ
         sprzedaj = new JPanel();

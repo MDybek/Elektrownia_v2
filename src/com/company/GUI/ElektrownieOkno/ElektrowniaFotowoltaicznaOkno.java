@@ -10,6 +10,8 @@ public class ElektrowniaFotowoltaicznaOkno extends ElektrowniaOknoAbstract {
 
     public ElektrowniaFotowoltaicznaOkno(Elektrownia elektrownia) {
         super(elektrownia);
+        dokupButton = new JButton(); //PYTANIE DLACZEGO BEZ TEGO NIE DZIALA ZAKUP ELEKTROWNI???????
+
         //skrot("Zuzycie paneli", "0%",informacje);
         magazyn.removeAll();
         kiedyDokupic.removeAll();
