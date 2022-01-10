@@ -113,14 +113,14 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             cena.setVisible(true); //cena się nie zaktualizowała, elektrownia po modyfikacjach ma taką samą cenę(naprawić)
             OknoFrame.frame.dispose();
         }
-        else if(e.getSource() == okno.kupBloki){
+        else if(e.getSource() == okno.kupBloki && Gracz.balans > ele.getCenaZakupu()){
             Gracz.balans -= ele.getCenaBloku();
             ele.setLiczbaBlokow(ele.getLiczbaBlokow() + 1);
             okno.mocMaksymalnaLabel.setText("<html><div style='text-align: center;'> Moc maksymalna elektrowni: <br> " + ele.getMocMaksymalna() +"<html>");
             okno.liczbaBlokowLabel.setText("<html><div style='text-align: center;'> Liczba blokow elektrowni: <br> " + ele.getLiczbaBlokow() +"<html>");
             odswierzSlider();
         }
-        else if(e.getSource() == okno.zatrudnijPracownika){
+        else if(e.getSource() == okno.zatrudnijPracownika && Gracz.balans > ele.getCenaZakupu()){
             Gracz.balans -= cenaZatrudnieniaPracownika;
             ele.setLiczbaPracownikow(ele.getLiczbaPracownikow() + 1);
             okno.liczbaPracownikowLabel.setText("<html><div style='text-align: center;'> Liczba pracowników elektrowni: <br> " + ele.getLiczbaPracownikow() +"<html>");
@@ -131,7 +131,7 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             okno.liczbaPracownikowLabel.setText("<html><div style='text-align: center;'> Liczba pracowników elektrowni: <br> " + ele.getLiczbaPracownikow() +"<html>");
             odswierzSlider();
         }
-        else if(e.getSource() == okno.dokupButton){
+        else if(e.getSource() == okno.dokupButton && Gracz.balans > ele.getCenaZakupu()){
             Gracz.balans -= ele.uzupelnij();
             ele.setStanMagazynu(ele.getPojemnoscMagazynu());
             okno.stanMagazynuLabel.setText("<html><div style='text-align: center;'> Stan magazynu: <br> " +ele.getStanMagazynu() +"<html>");
@@ -194,4 +194,5 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         }
         okno.stateChanged(e);
     }
+
 }

@@ -113,6 +113,7 @@ public class GamePanel extends JPanel implements ActionListener {
             serializacje.zapisDni(dni);
             serializacje.zapis(gracz.getListaPrzyciskow());
             serializacje.zapisStanuKonta(Gracz.balans);
+            sprawdzCzyKoniec();
         }
         //-------------------------------------------------------------------------
         else if (e.getSource() == listaAtom.powrot) {
@@ -147,6 +148,13 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void atakNotification(String miasto) {
         JOptionPane.showMessageDialog(null, "Doszło do ataku terrorystycznego na elektrownie w " + miasto + "!", "Komunikat", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void sprawdzCzyKoniec(){
+        if(Gracz.balans < 0){
+            JOptionPane.showMessageDialog(null, "PRZEGRAŁEŚ, SKOŃCZYŁY CI SIĘ ŚRODKI!", "KONIEC GRY", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
     }
 }
 

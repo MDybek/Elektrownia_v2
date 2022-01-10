@@ -83,7 +83,6 @@ public class ListaEle extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         this.revalidate();
         this.repaint();
     }
