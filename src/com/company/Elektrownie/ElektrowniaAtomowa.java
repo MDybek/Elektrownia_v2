@@ -4,25 +4,12 @@ import com.company.Head.Wlasciciel;
 import com.company.uslugodawcy.DystrybutorPradu;
 import com.company.uslugodawcy.OdbiorcaOdpadow;
 
-import java.util.ArrayList;
-
 public class ElektrowniaAtomowa extends Elektrownia {
 
     private int LiczbaReaktorow;
     private float ZuzycieWody;
     private int kiedyDokupic;
-    private int pojemnoscMagazynu;
-    private com.company.uslugodawcy.OdbiorcaOdpadow OdbiorcaOdpadow;
-    private ArrayList<String> listaMiastAtom = new ArrayList<>(){
-        {
-            add("Miasto1");
-            add("Miasto2");
-            add("Miasto3");
-            add("Miasto4");
-            add("Miasto5");
-
-        }
-    };
+    private OdbiorcaOdpadow OdbiorcaOdpadow;
 
     public ElektrowniaAtomowa(){
         super();
@@ -61,7 +48,7 @@ public class ElektrowniaAtomowa extends Elektrownia {
 
 
 
-    public com.company.uslugodawcy.OdbiorcaOdpadow getOdbiorcaOdpadow() {
+    public OdbiorcaOdpadow getOdbiorcaOdpadow() {
         return OdbiorcaOdpadow;
     }
 
@@ -74,15 +61,6 @@ public class ElektrowniaAtomowa extends Elektrownia {
     public void setKiedyDokupic(int kiedyDokupic) { this.kiedyDokupic = kiedyDokupic; }
     public float uzupelnij(){
         return  this.getStanMagazynu() * this.OdbiorcaOdpadow.getCenaZaTone();
-    }
-
-
-    public int getPojemnoscMagazynu() {
-        return pojemnoscMagazynu;
-    }
-
-    public void setPojemnoscMagazynu(int pojemnoscMagazynu) {
-        this.pojemnoscMagazynu = pojemnoscMagazynu;
     }
 
     @Override

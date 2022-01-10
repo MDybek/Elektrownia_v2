@@ -14,8 +14,8 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
     @Override
     public float ObliczDochod(Elektrownia e) {
         e.setMocMaksymalna(e.getLiczbaBlokow()*((ElektrowniaAtomowa) e).getLiczbaReaktorow()*EnegiaProdukowanaPrzezReaktor);
-        if(((ElektrowniaAtomowa) e).getStanMagazynu()*100/((ElektrowniaAtomowa) e).getPojemnoscMagazynu() < e.getKiedyDokupic()){
-            ((ElektrowniaAtomowa) e).setStanMagazynu(0);
+        if(e.getStanMagazynu()*100/e.getPojemnoscMagazynu() < e.getKiedyDokupic()){
+            e.setStanMagazynu(0);
             return
                     //przychod
                     e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24

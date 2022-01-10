@@ -94,9 +94,9 @@ public class GamePanel extends JPanel implements ActionListener {
             for (Kafelek k : gracz.getListaPrzyciskow()){
                 int tym = random.nextInt(0,100);
                 if (k.isEnabled()){
-                    /*
+
                     if (tym == 13){
-                        k.ele.ReakcjaNaAtakTerrorystyczny(k.ele, gracz);
+                        k.ele.ReakcjaNaAtakTerrorystyczny(k.ele);
                         atakNotification(k.ele.getMiasto());
                     }
                     if (tym < 2){
@@ -104,7 +104,6 @@ public class GamePanel extends JPanel implements ActionListener {
                         awariaNotification(k.ele.getMiasto());
                     }
 
-                     */
                     gracz.dodajBalans(k.ele.ObliczDochod(k.ele));
                     gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
                 }
@@ -133,6 +132,10 @@ public class GamePanel extends JPanel implements ActionListener {
             add(gra, BorderLayout.CENTER);
         }
         gra.stan_konta.setText("Aktualny stan konta: " + Gracz.balans);
+        listaAtom.stanKonta.setText("Stan konta: " + Gracz.balans);
+        listaFoto.stanKonta.setText("Stan konta: " + Gracz.balans);
+        listaWegiel.stanKonta.setText("Stan konta: " + Gracz.balans);
+        listaGaz.stanKonta.setText("Stan konta: " + Gracz.balans);
 
         this.revalidate();
         this.repaint();
