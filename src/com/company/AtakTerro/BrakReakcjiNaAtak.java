@@ -8,8 +8,11 @@ import java.util.Random;
 
 public class BrakReakcjiNaAtak implements ReakcjeNaAtakTerrorystyczny, Serializable {
     @Override
-    public void ReakcjaNaAtakTerrorystyczny(Elektrownia e, Gracz g) {
+    public void ReakcjaNaAtakTerrorystyczny(Elektrownia e) {
         Random random = new Random();
-            g.odejmijBalans(random.nextInt(2000,7000));
+        e.setLiczbaPracownikow(e.getLiczbaPracownikow() - random.nextInt(0,3));
+        e.setLiczbaBlokow(e.getLiczbaBlokow() - random.nextInt(0,2));
+        Gracz.balans -= random.nextInt(1000,5000);
+        e.setMocChwilowa(0);
     }
 }

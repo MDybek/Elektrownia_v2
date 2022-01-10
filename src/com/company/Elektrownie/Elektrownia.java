@@ -221,8 +221,8 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 	public ObliczDochodElektrowni getObliczDochodElektrowni() {
 		return obliczDochodElektrowni;
 	}
-	public void ReakcjaNaAtakTerrorystyczny(Elektrownia e, Gracz g){
-		reakcjeNaAtakTerrorystyczny.ReakcjaNaAtakTerrorystyczny(e, g);
+	public void ReakcjaNaAtakTerrorystyczny(Elektrownia e){
+		reakcjeNaAtakTerrorystyczny.ReakcjaNaAtakTerrorystyczny(e);
 	}
 
 	public void ReakcjeNaAwarieZasilania(Elektrownia e){

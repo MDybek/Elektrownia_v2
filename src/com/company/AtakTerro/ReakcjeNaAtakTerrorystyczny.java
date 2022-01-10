@@ -5,7 +5,7 @@ import com.company.Head.Gracz;
 
 public interface ReakcjeNaAtakTerrorystyczny {
 
-    void ReakcjaNaAtakTerrorystyczny(Elektrownia e, Gracz g);
+    void ReakcjaNaAtakTerrorystyczny(Elektrownia e);
 }
 
 

@@ -1,6 +1,7 @@
 package com.company.Awarie;
 
 import com.company.Elektrownie.Elektrownia;
+import com.company.Head.Gracz;
 
 import java.io.Serializable;
 import java.util.Random;
@@ -11,12 +12,9 @@ public class Sposob2ReakcjaNaAwarieZasilania implements ReakcjaNaAwarieZasilania
 
     @Override
     public void ReakcjeNaAwarieZasilania(Elektrownia e) {
-
-    	Random generator = new Random();
-		
+        e.setLiczbaBlokow(e.getLiczbaBlokow() - 3);
+        Gracz.balans -= 4000;
         e.setMocChwilowa(50*e.getMocMaksymalna()/100);
-		System.out.print("Z powodu awarii zasilania moc chwilowa zostaje zmniejszona do 50%. ");
-
-
+        //pracownicy prawie wyłączają elektrownie wiec moc na 50%, nie giną ale przez to tracą bloki
     }
 }

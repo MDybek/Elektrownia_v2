@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
 //NIE DZIALA AKTUALIZOWANIE SIE DANYCH PO NACISNIECIU PRZYCISKOW KUP/SPRZEDAJ ITD
 
-abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionListener, ChangeListener {
+abstract public class ElektrowniaOknoAbstract extends JPanel implements  ChangeListener {
     JPanel mainPanel;
 
     //akcje
@@ -244,7 +244,6 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         zapiszIZamknij.setFont(new Font("Arial black", Font.BOLD, 22));
         zapiszIZamknij.setForeground(Color.red);
         zapiszIZamknij.setAlignmentX(Component.CENTER_ALIGNMENT);
-        zapiszIZamknij.addActionListener(this);
         zamknij.add(zapiszIZamknij);
 
         skroty.add(zamknij);
@@ -282,7 +281,6 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         przycisk.setFont(new Font("Arial black", Font.BOLD, 22));
         przycisk.setForeground(color);
         przycisk.setFocusable(false);
-        przycisk.addActionListener(this);
         panel.add(przycisk);
     }
     public void radia(JRadioButton brak,JRadioButton przycisk1,JRadioButton przycisk2, ButtonGroup grupa, JPanel panel) {
@@ -333,9 +331,6 @@ abstract public class ElektrowniaOknoAbstract extends JPanel implements ActionLi
         parent.add(label);
     }
 
-
-    public void actionPerformed(ActionEvent e) {
-    }
     public void stateChanged(ChangeEvent e){
         if (e.getSource() == mocSlider) {
             mocLabel.setText(mocSlider.getValue() + " %");
