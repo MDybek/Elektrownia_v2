@@ -142,7 +142,7 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         }
         //REAKCJE ATAK JBUTTON
         else if (e.getSource() == okno.atakBrak){
-            ele.setReakcjaNaAwarieZasilania(new BrakReakcjiNaAwarie());  //trzeba w konstruktorze usunąć sposobna reakcje(int)
+            ele.setReakcjaNaAwarieZasilania(new BrakReakcjiNaAwarie());
         }else if (e.getSource() == okno.atak1){
             ele.setReakcjeNaAtakTerrorystyczny(new Sposob1ReakcjaNaAtakTerrorystyczny());
         }else if (e.getSource() == okno.atak2){
