@@ -13,28 +13,32 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
 
     @Override
     public float ObliczDochod(Elektrownia e) {
-        e.setMocMaksymalna(e.getLiczbaBlokow()*((ElektrowniaAtomowa) e).getLiczbaReaktorow()*EnegiaProdukowanaPrzezReaktor);
-        if(e.getStanMagazynu()*100/e.getPojemnoscMagazynu() < e.getKiedyDokupic()){
-            e.setStanMagazynu(0);
+
+        ElektrowniaAtomowa ea = (ElektrowniaAtomowa) e;
+
+        ea.setMocMaksymalna(ea.getLiczbaBlokow()*ea.getLiczbaReaktorow()*EnegiaProdukowanaPrzezReaktor);
+
+        if(ea.getStanMagazynu()*100/ea.getPojemnoscMagazynu() < ea.getKiedyDokupic()){
+            ea.setStanMagazynu(0);
             return
                     //przychod
-                    e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24
+                    ea.getMocChwilowa()* ea.getDystrybutor().getCenaSkupu()*24
                             //wydatki
-                            - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getZuzycieWody()*cenaWody
-                            - e.getLiczbaPracownikow()*StawkaGodzinowa*24
-                            - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone()
-                            - ((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
+                            - ea.getMocChwilowa()* ea.getZuzycieWody()*cenaWody
+                            - ea.getLiczbaPracownikow()*StawkaGodzinowa*24
+                            - ea.getMocChwilowa()*ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone()
+                            - ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone();
         }
 
         return
                 //przychod
-                e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24 //36000
+                ea.getMocChwilowa()* ea.getDystrybutor().getCenaSkupu()*24
                 //wydatki
                         //na wode
-                - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getZuzycieWody()*cenaWody //1500
+                - ea.getMocChwilowa()*ea.getZuzycieWody()*cenaWody
                         //na pracownikow
-                - e.getLiczbaPracownikow()*StawkaGodzinowa*24 //9600
+                - ea.getLiczbaPracownikow()*StawkaGodzinowa*24
                         //na odbior odpadow
-                - e.getMocChwilowa()*((ElektrowniaAtomowa) e).getStanMagazynu()*((ElektrowniaAtomowa) e).getOdbiorcaOdpadow().getCenaZaTone();
-    }//11400
+                - ea.getMocChwilowa()*ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone();
+    }
 }

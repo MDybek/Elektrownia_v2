@@ -1,9 +1,6 @@
 package com.company.Dochod;
 
-import com.company.Elektrownie.Elektrownia;
-import com.company.Elektrownie.ElektrowniaGazowa;
-import com.company.Elektrownie.ElektrowniaNaPaliwoStale;
-import com.company.Elektrownie.ElektrowniaWeglowa;
+import com.company.Elektrownie.*;
 
 import java.io.Serializable;
 
@@ -17,20 +14,23 @@ public class DochodGazowa implements ObliczDochodElektrowni, Serializable {
 
     public float ObliczDochod(Elektrownia e){
 
-        e.setMocMaksymalna(e.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
+        ElektrowniaGazowa eg = (ElektrowniaGazowa) e;
 
-        if (((ElektrowniaGazowa) e).getStanMagazynu()*100/((ElektrowniaGazowa) e).getPojemnoscMagazynu() < e.getKiedyDokupic()){
-            ((ElektrowniaGazowa) e).setStanMagazynu(((ElektrowniaGazowa) e).getPojemnoscMagazynu() );
-            return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24 //23558
-                    - e.getMocChwilowa()*((ElektrowniaGazowa) e).getZuzyciePaliwa()*((ElektrowniaGazowa) e).getDostawcaGazu().getCenaZaM3() //5158
-                    -e.getLiczbaPracownikow()*StawkaGodzinowa*24  //8400
-                    -IloscCO2*e.getMocChwilowa()*OplataEmisyjna //1000
-                    -((ElektrowniaGazowa) e).getDostawcaGazu().getCenaZaM3()*(((ElektrowniaGazowa) e).getPojemnoscMagazynu()-((ElektrowniaGazowa) e).getStanMagazynu());
+        eg.setMocMaksymalna(eg.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
+
+        if (eg.getStanMagazynu()*100/eg.getPojemnoscMagazynu() < eg.getKiedyDokupic()){
+            eg.setStanMagazynu(eg.getPojemnoscMagazynu());
+
+            return  eg.getMocChwilowa()* eg.getDystrybutor().getCenaSkupu()*24
+                    - eg.getMocChwilowa()*(eg.getZuzyciePaliwa()*eg.getDostawcaGazu().getCenaZaM3()
+                    -eg.getLiczbaPracownikow()*StawkaGodzinowa*24
+                    -IloscCO2*eg.getMocChwilowa()*OplataEmisyjna
+                    -eg.getDostawcaGazu().getCenaZaM3()*eg.getPojemnoscMagazynu()-eg.getStanMagazynu());
         }
 
-        return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24 //23558
-                - e.getMocChwilowa()*((ElektrowniaGazowa) e).getZuzyciePaliwa()*((ElektrowniaGazowa) e).getDostawcaGazu().getCenaZaM3() //5158
-                -e.getLiczbaPracownikow()*StawkaGodzinowa*24  //8400
-                -IloscCO2*e.getMocChwilowa()*OplataEmisyjna; //1000
-    } //15228
+        return  eg.getMocChwilowa()* eg.getDystrybutor().getCenaSkupu()*24
+                - eg.getMocChwilowa()*eg.getZuzyciePaliwa()*eg.getDostawcaGazu().getCenaZaM3()
+                -eg.getLiczbaPracownikow()*StawkaGodzinowa*24
+                -IloscCO2*eg.getMocChwilowa()*OplataEmisyjna;
+    }
 }

@@ -1,6 +1,7 @@
 package com.company.Dochod;
 
 import com.company.Elektrownie.Elektrownia;
+import com.company.Elektrownie.ElektrowniaGazowa;
 import com.company.Elektrownie.ElektrowniaWeglowa;
 
 import java.io.Serializable;
@@ -15,24 +16,29 @@ public class DochodWeglowa implements ObliczDochodElektrowni, Serializable {
 
     public float ObliczDochod(Elektrownia e){
 
-        e.setMocMaksymalna(e.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
-        if(((ElektrowniaWeglowa) e).getStanMagazynu()*100/((ElektrowniaWeglowa) e).getStanMagazynu() < ((ElektrowniaWeglowa) e).getKiedyDokupic()){
-            ((ElektrowniaWeglowa) e).setStanMagazynu(((ElektrowniaWeglowa) e).getPojemnoscMagazynu());
-            return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24  // dochód
+        ElektrowniaWeglowa ew = (ElektrowniaWeglowa) e;
+
+        ew.setMocMaksymalna(ew.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
+
+        if(ew.getStanMagazynu()*100/ew.getStanMagazynu() < ew.getKiedyDokupic()){
+            ew.setStanMagazynu(ew.getPojemnoscMagazynu());
+
+            return  ew.getMocChwilowa()* ew.getDystrybutor().getCenaSkupu()*24  // dochód
                     //wydatki na wegiel
-                    - e.getMocChwilowa()*((ElektrowniaWeglowa) e).getZuzyciePaliwa()*((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone()
+                    - ew.getMocChwilowa()*ew.getZuzyciePaliwa()*ew.getDostawcaWegla().getCenaZaTone()
                     //wydatki na pracownikow
-                    -e.getLiczbaPracownikow()*StawkaGodzinowa*24
+                    -ew.getLiczbaPracownikow()*StawkaGodzinowa*24
                     //wydatki na kary emisyjne
-                    -IloscCO2*e.getMocChwilowa()*OplataEmisyjna
-                    -((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone()*(((ElektrowniaWeglowa) e).getPojemnoscMagazynu()-((ElektrowniaWeglowa) e).getStanMagazynu());
+                    -IloscCO2*ew.getMocChwilowa()*OplataEmisyjna
+                    -ew.getDostawcaWegla().getCenaZaTone()*ew.getPojemnoscMagazynu()-ew.getStanMagazynu();
         }
-        return  e.getMocChwilowa()* e.getDystrybutor().getCenaSkupu()*24  // dochód //19980
+
+        return  ew.getMocChwilowa()* ew.getDystrybutor().getCenaSkupu()*24  // dochód
                 //wydatki na wegiel
-                - e.getMocChwilowa()*((ElektrowniaWeglowa) e).getZuzyciePaliwa()*((ElektrowniaWeglowa) e).getDostawcaWegla().getCenaZaTone() //
+                - ew.getMocChwilowa()*ew.getZuzyciePaliwa()*ew.getDostawcaWegla().getCenaZaTone()
                 //wydatki na pracownikow
-                -e.getLiczbaPracownikow()*StawkaGodzinowa*24 //8400
+                -ew.getLiczbaPracownikow()*StawkaGodzinowa*24
                 //wydatki na kary emisyjne
-                -IloscCO2*e.getMocChwilowa()*OplataEmisyjna; //1875
+                -IloscCO2*ew.getMocChwilowa()*OplataEmisyjna;
     }
 }

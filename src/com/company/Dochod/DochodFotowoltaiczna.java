@@ -1,6 +1,7 @@
 package com.company.Dochod;
 
 import com.company.Elektrownie.Elektrownia;
+import com.company.Elektrownie.ElektrowniaAtomowa;
 import com.company.Elektrownie.ElektrowniaFotowoltaiczna;
 
 import java.io.Serializable;
@@ -13,15 +14,17 @@ public class DochodFotowoltaiczna implements ObliczDochodElektrowni, Serializabl
     @Override
     public float ObliczDochod(Elektrownia e) {
 
-        e.setMocMaksymalna(e.getLiczbaBlokow() * EnergiaProdukowanaPrzezJedenBlok);
-        ((ElektrowniaFotowoltaiczna) e).setZuzyciePaneli(((ElektrowniaFotowoltaiczna) e).getZuzyciePaneli() + 2);
+        ElektrowniaFotowoltaiczna ef = (ElektrowniaFotowoltaiczna) e;
 
-        while (((ElektrowniaFotowoltaiczna) e).getZuzyciePaneli() < 100) {
+        ef.setMocMaksymalna(ef.getLiczbaBlokow() * EnergiaProdukowanaPrzezJedenBlok);
+        ef.setZuzyciePaneli(ef.getZuzyciePaneli() + 2);
+
+        while (ef.getZuzyciePaneli() < 100) {
             return
                     //przychod
-                    e.getMocChwilowa() * e.getDystrybutor().getCenaSkupu() * 12  //6600  //7260
+                    ef.getMocChwilowa() * ef.getDystrybutor().getCenaSkupu() * 12
                             //wydatki
-                            - e.getLiczbaPracownikow() * StawkaGodzinowa * 12; //3600
+                            - ef.getLiczbaPracownikow() * StawkaGodzinowa * 12;
         }
         return 0;
     }
