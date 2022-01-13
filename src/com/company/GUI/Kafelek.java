@@ -98,7 +98,15 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
             kup.setVisible(false);
             cena.setVisible(false);
             this.setEnabled(true);
-        }else if(e.getSource() == kup && Gracz.balans < ele.getCenaZakupu()){
+        }
+        else if (e.getSource() == kup && Gracz.balans > ele.getCenaZakupu()){
+            przypisOkna();
+            Gracz.balans -= ele.getCenaZakupu();
+            kup.setVisible(false);
+            cena.setVisible(false);
+            this.setEnabled(true);
+        }
+        else if(e.getSource() == kup && Gracz.balans < ele.getCenaZakupu()){
             JOptionPane.showMessageDialog(null,"Nie stać cię biedaku!","Komunikat",JOptionPane.INFORMATION_MESSAGE);
         }
         else if(e.getSource() == this){
