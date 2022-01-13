@@ -1,5 +1,6 @@
 package com.company.GUI;
 import com.company.Elektrownie.Elektrownia;
+import com.company.Elektrownie.ListyElektrowni;
 import com.company.GUI.ElektrownieOkno.*;
 import com.company.Head.Gracz;
 import com.company.Head.Serializacja;
@@ -161,6 +162,36 @@ public class GamePanel extends JPanel implements ActionListener {
             JOptionPane.showMessageDialog(null, "PRZEGRAŁEŚ, SKOŃCZYŁY CI SIĘ ŚRODKI!", "KONIEC GRY", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         }
+
+        else if(dni == 90 && ilePosiadamElektrownii()==20) {
+            JOptionPane.showMessageDialog(null, "Wygrałeś, gratulacje!", "KONIEC GRY", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        else if(dni == 90) {
+            JOptionPane.showMessageDialog(null, "Przegrałeś, skończył ci się czas.", "KONIEC GRY", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }
+
+    public int ilePosiadamElektrownii() {
+        int w = 0;
+        for(int i = 0; i<gracz.getListaPrzyciskow().size(); i++) {
+            if(gracz.getListaPrzyciskow().get(i).getKup().isVisible()==false) {
+                w++;
+            }
+        }
+        return w;
+    }
+
+    public int ilePosiadamDanychElektrownii(Elektrownia e) {
+        int w = 0;
+        for(int i = 0; i<gracz.getListaPrzyciskow().size(); i++) {
+            if(gracz.getListaPrzyciskow().get(i).getKup().isVisible()==false && gracz.getListaPrzyciskow().get(i).ele.getClass() == e.getClass()) {
+                w++;
+            }
+        }
+        return w;
     }
 }
 

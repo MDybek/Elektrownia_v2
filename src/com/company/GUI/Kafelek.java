@@ -6,6 +6,7 @@ import com.company.Awarie.BrakReakcjiNaAwarie;
 import com.company.Awarie.Sposob1ReakcjaNaAwarieZasilania;
 import com.company.Awarie.Sposob2ReakcjaNaAwarieZasilania;
 import com.company.Elektrownie.Elektrownia;
+import com.company.Elektrownie.ElektrowniaAtomowa;
 import com.company.GUI.ElektrownieOkno.*;
 import com.company.Head.Gracz;
 
@@ -90,9 +91,14 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
     }
 
 
+    public JButton getKup() {
+        return kup;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == kup && Gracz.balans > ele.getCenaZakupu()){
+
+        if (e.getSource() == kup && ele.getClass() == new ElektrowniaAtomowa().getClass() ){
             przypisOkna();
             Gracz.balans -= ele.getCenaZakupu();
             kup.setVisible(false);
