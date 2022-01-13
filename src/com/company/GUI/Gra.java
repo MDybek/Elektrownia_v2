@@ -28,7 +28,7 @@ public class Gra extends JPanel{
         stan_konta.setFont(new Font("Arial black", Font.BOLD, 20));
         //dni
         dni = new JLabel("Dzień: "+ GamePanel.dni);
-        dni.setBounds(0,0,50,50);
+        dni.setBounds(0,0,150,50);
 
         //atomowa
         ImageIcon Atomowa = new ImageIcon("Atomowa_v2.png");
