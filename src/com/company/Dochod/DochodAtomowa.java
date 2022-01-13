@@ -19,15 +19,13 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
         ea.setMocMaksymalna(ea.getLiczbaBlokow()*ea.getLiczbaReaktorow()*EnegiaProdukowanaPrzezReaktor);
 
         if(ea.getStanMagazynu()*100/ea.getPojemnoscMagazynu() < ea.getKiedyDokupic()){
-            ea.setStanMagazynu(0);
+            ea.setStanMagazynu(ea.getPojemnoscMagazynu());
             return
                     //przychod
                     ea.getMocChwilowa()* ea.getDystrybutor().getCenaSkupu()*24
                             //wydatki
                             - ea.getMocChwilowa()* ea.getZuzycieWody()*cenaWody
-                            - ea.getLiczbaPracownikow()*StawkaGodzinowa*24
-                            - ea.getMocChwilowa()*ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone()
-                            - ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone();
+                            - ea.getLiczbaPracownikow()*StawkaGodzinowa*24;
         }
 
         return
@@ -37,8 +35,6 @@ public class DochodAtomowa implements ObliczDochodElektrowni, Serializable {
                         //na wode
                 - ea.getMocChwilowa()*ea.getZuzycieWody()*cenaWody
                         //na pracownikow
-                - ea.getLiczbaPracownikow()*StawkaGodzinowa*24
-                        //na odbior odpadow
-                - ea.getMocChwilowa()*ea.getStanMagazynu()*ea.getOdbiorcaOdpadow().getCenaZaTone();
+                - ea.getLiczbaPracownikow()*StawkaGodzinowa*24;
     }
 }

@@ -14,7 +14,7 @@ public class Gracz implements Serializable {
     ListyElektrowni listyElektrowni = new ListyElektrowni();
 
     public Gracz() {
-        balans = 1000000f;
+        balans = 100000000f;
         listaPrzyciskow = new ArrayList<>();
         for (Elektrownia e : listyElektrowni.elektrownie){
             listaPrzyciskow.add(new Kafelek(e));
