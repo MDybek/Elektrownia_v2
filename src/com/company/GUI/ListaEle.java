@@ -16,6 +16,7 @@ public class ListaEle extends JPanel implements ActionListener {
     public JLabel stanKonta;
 
     JPanel panelPrzyciskow;
+    JButton dodaj;
     JButton powrot;
     JPanel dol;
 
@@ -25,6 +26,16 @@ public class ListaEle extends JPanel implements ActionListener {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(szer,wys));
         this.setBackground(Color.gray);
+
+        //maly przycisk
+        JPanel top = new JPanel();
+        dodaj = new JButton("+");
+        dodaj.setPreferredSize(new Dimension(5,5));
+        dodaj.addActionListener(this);
+        top.setPreferredSize(new Dimension(szer,10));
+        top.setBackground(Color.gray);
+        top.add(dodaj);
+        this.add(top);
 
         //TYTUŁ PANELU
         tytul = new JLabel("Lista twoich elektrowni " + title);
@@ -57,7 +68,7 @@ public class ListaEle extends JPanel implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(panelPrzyciskow,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         this.add(scrollPane);
-        this.add(Box.createRigidArea(new Dimension(0,120)));
+        this.add(Box.createRigidArea(new Dimension(0,100)));
 
         //DOLNY PANEL
         dol = new JPanel();
@@ -83,6 +94,12 @@ public class ListaEle extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == dodaj){
+            JButton tym = new JButton();
+            tym.setPreferredSize(new Dimension(180,200));
+            tym.setText("test");
+            panelPrzyciskow.add(tym);
+        }
         this.revalidate();
         this.repaint();
     }
