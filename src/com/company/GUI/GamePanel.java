@@ -1,6 +1,5 @@
 package com.company.GUI;
-import com.company.Elektrownie.Elektrownia;
-import com.company.Elektrownie.ListyElektrowni;
+import com.company.Elektrownie.*;
 import com.company.GUI.ElektrownieOkno.*;
 import com.company.Head.Gracz;
 import com.company.Head.Serializacja;
@@ -9,7 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
+
+import static java.util.Collections.*;
 
 public class GamePanel extends JPanel implements ActionListener {
     final int width = 942;
@@ -23,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener {
     static ListaEle listaWegiel;
     static ListaEle listaGaz;
     static ListaEle listaFoto;
+    public static Gracz staticGracz;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(width, height));
@@ -48,6 +53,7 @@ public class GamePanel extends JPanel implements ActionListener {
         if (e.getSource() == menu.nowaGra) {
             dni = 0;
             gracz = new Gracz();
+            staticGracz = gracz;
             listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
             listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
             listaWegiel = new ListaEle(width, height, "weglowych", gracz, "weglowa");
@@ -66,6 +72,7 @@ public class GamePanel extends JPanel implements ActionListener {
             dni = serializacje.odczytDni();
             gra.dni.setText("Dzień: " + dni);
             gracz = new Gracz(serializacje.odczyt(),serializacje.odczytStanuKonta());
+            staticGracz = gracz;
             listaAtom = new ListaEle(width, height, "atomowych", gracz, "atomowa");
             listaFoto = new ListaEle(width, height, "fotowoltaicnych", gracz, "fotowoltaiczna");
             listaWegiel = new ListaEle(width, height, "weglowych", gracz, "weglowa");
@@ -116,11 +123,13 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
             dni +=1;
+            staticGracz = gracz;
             gra.dni.setText("Dzień: " + dni);
             serializacje.zapisDni(dni);
             serializacje.zapis(gracz.getListaPrzyciskow());
             serializacje.zapisStanuKonta(Gracz.balans);
             sprawdzCzyKoniec();
+
         }
         //-------------------------------------------------------------------------
         else if (e.getSource() == listaAtom.powrot) {
@@ -163,7 +172,7 @@ public class GamePanel extends JPanel implements ActionListener {
             System.exit(0);
         }
 
-        else if(dni == 90 && ilePosiadamElektrownii()==20) {
+        else if(dni == 90 && ilePosiadamElektrownii(gracz)==gracz.getListaPrzyciskow().size()) {
             JOptionPane.showMessageDialog(null, "Wygrałeś, gratulacje!", "KONIEC GRY", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
         }
@@ -174,7 +183,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public int ilePosiadamElektrownii() {
+    public static int ilePosiadamElektrownii(Gracz gracz) {
         int w = 0;
         for(int i = 0; i<gracz.getListaPrzyciskow().size(); i++) {
             if(gracz.getListaPrzyciskow().get(i).getKup().isVisible()==false) {
@@ -184,7 +193,7 @@ public class GamePanel extends JPanel implements ActionListener {
         return w;
     }
 
-    public int ilePosiadamDanychElektrownii(Elektrownia e) {
+    public static int ilePosiadamDanychElektrownii(Elektrownia e, Gracz gracz) {
         int w = 0;
         for(int i = 0; i<gracz.getListaPrzyciskow().size(); i++) {
             if(gracz.getListaPrzyciskow().get(i).getKup().isVisible()==false && gracz.getListaPrzyciskow().get(i).ele.getClass() == e.getClass()) {
@@ -192,6 +201,32 @@ public class GamePanel extends JPanel implements ActionListener {
             }
         }
         return w;
+    }
+
+    public static ArrayList<Elektrownia> getElektrownieTypu(Elektrownia e,Gracz gracz) {
+        ArrayList<Elektrownia> Array = new ArrayList<Elektrownia>();
+        for(int i = 0; i<gracz.getListaPrzyciskow().size(); i++) {
+            if(gracz.getListaPrzyciskow().get(i).ele.getClass() == e.getClass()) {
+                Array.add(gracz.getListaPrzyciskow().get(i).ele);
+            }
+        }
+        return Array;
+    }
+
+    public static ArrayList<Elektrownia> sortElektrownieTypu(Elektrownia e, Gracz g) {
+        ArrayList<Elektrownia> Array = getElektrownieTypu(e,g);
+        Collections.sort(Array);
+        return Array;
+    }
+
+    public static int czyWysokiTier(Elektrownia e, Gracz g) {
+        ArrayList<Elektrownia> Array = sortElektrownieTypu(e,g);
+        for(int i=0; i<Array.size(); i++) {
+            if(e == Array.get(i)) {
+                return i;
+            }
+        }
+        return 4;
     }
 }
 

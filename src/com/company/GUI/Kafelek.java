@@ -95,15 +95,15 @@ public class Kafelek extends JButton implements ActionListener, ChangeListener {
         return kup;
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == kup && ele.getClass() == new ElektrowniaAtomowa().getClass() ){
-            przypisOkna();
-            Gracz.balans -= ele.getCenaZakupu();
-            kup.setVisible(false);
-            cena.setVisible(false);
-            this.setEnabled(true);
+        if (e.getSource() == kup && ele.getClass() == new ElektrowniaAtomowa().getClass() && GamePanel.ilePosiadamElektrownii(GamePanel.staticGracz) < 10){
+            JOptionPane.showMessageDialog(null,"Musisz posiadać przynajmniej 10 innych elektrownii.","Komunikat",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (e.getSource() == kup && Gracz.balans > ele.getCenaZakupu() && GamePanel.czyWysokiTier(ele,GamePanel.staticGracz)>3 && GamePanel.ilePosiadamDanychElektrownii(ele, GamePanel.staticGracz)<4){
+            JOptionPane.showMessageDialog(null,"Musisz posiadać wszystkie tańsze elektrownie danego typu.","Komunikat",JOptionPane.INFORMATION_MESSAGE);
         }
         else if (e.getSource() == kup && Gracz.balans > ele.getCenaZakupu()){
             przypisOkna();

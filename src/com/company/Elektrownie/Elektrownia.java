@@ -17,7 +17,7 @@ import com.company.Dochod.ObliczDochodElektrowni;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Elektrownia implements Serializable, ObliczDochodElektrowni, ReakcjeNaAtakTerrorystyczny,ReakcjaNaAwarieZasilania{
+public abstract class Elektrownia implements Serializable, ObliczDochodElektrowni, ReakcjeNaAtakTerrorystyczny,ReakcjaNaAwarieZasilania, Comparable<Elektrownia>{
 
 	private static final long serialVersionUID = 1234770990255762290L;
 
@@ -84,6 +84,12 @@ public abstract class Elektrownia implements Serializable, ObliczDochodElektrown
 		for(int i = 0; i<pracownicy.length;i++){
 			pracownicy[i] = new Pracownicy();
 		}
+	}
+
+	public int compareTo(Elektrownia e) {
+		if(this.getCenaZakupu()<e.getCenaZakupu()) return -1;
+		if(this.getCenaZakupu()>e.getCenaZakupu()) return 1;
+		return 0;
 	}
 
 	public int getLiczbaBlokow() { return liczbaBlokow; }
