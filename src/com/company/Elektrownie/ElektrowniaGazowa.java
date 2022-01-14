@@ -16,11 +16,11 @@ public class ElektrowniaGazowa extends ElektrowniaNaPaliwoStale  {
 	}
 
 	public ElektrowniaGazowa(String Nazwa, String Miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow,
-							 Wlasciciel wlasciciel, boolean czyPracuje, String RodzajPaliwa, float ZuzyciePaliwa, int LiczbaBlokow,
+							 Wlasciciel wlasciciel, boolean czyPracuje, String RodzajPaliwa, float ZuzyciePaliwa,
 							 DystrybutorPradu Dystrubutor, int stanMagazynu, DostawcaGazu DostawcaGazu,
 							 int pojemnoscMagazynu, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic) {
 		super(Nazwa, Miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, wlasciciel, czyPracuje,
-				RodzajPaliwa, ZuzyciePaliwa, LiczbaBlokow, Dystrubutor, cenaZakupu, cenaSprzedazy, cenaBloku,
+				RodzajPaliwa, ZuzyciePaliwa, Dystrubutor, cenaZakupu, cenaSprzedazy, cenaBloku,
 				kiedyDokupic,stanMagazynu,pojemnoscMagazynu);
 
 		this.DostawcaGazu = DostawcaGazu;

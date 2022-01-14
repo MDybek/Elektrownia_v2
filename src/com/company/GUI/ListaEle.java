@@ -14,6 +14,7 @@ public class ListaEle extends JPanel implements ActionListener {
     private int liczbaEle = 0;
     JLabel tytul;
     public JLabel stanKonta;
+    String rodzajElektrowni;
 
     JPanel panelPrzyciskow;
     JButton dodaj;
@@ -21,7 +22,7 @@ public class ListaEle extends JPanel implements ActionListener {
     JPanel dol;
 
     ListaEle(int szer, int wys,String title, Gracz g, String typ){
-
+        rodzajElektrowni = typ;
         //USTAWIENIA PANELU
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(szer,wys));
@@ -29,17 +30,17 @@ public class ListaEle extends JPanel implements ActionListener {
 
         //maly przycisk
         JPanel top = new JPanel();
-        dodaj = new JButton("+");
-        dodaj.setPreferredSize(new Dimension(5,5));
+        dodaj = new JButton("Dodaj elektrownie");
+        dodaj.setPreferredSize(new Dimension(150,30));
         dodaj.addActionListener(this);
-        top.setPreferredSize(new Dimension(szer,10));
+        top.setPreferredSize(new Dimension(szer,30));
         top.setBackground(Color.gray);
         top.add(dodaj);
         this.add(top);
 
         //TYTUŁ PANELU
         tytul = new JLabel("Lista twoich elektrowni " + title);
-        this.add(Box.createRigidArea(new Dimension(0,50)));
+        this.add(Box.createRigidArea(new Dimension(0,30)));
         tytul.setFont(new Font("Ink Free",Font.BOLD,40));
         tytul.setForeground(Color.white);
         tytul.setAlignmentX(CENTER_ALIGNMENT);
@@ -95,10 +96,7 @@ public class ListaEle extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == dodaj){
-            JButton tym = new JButton();
-            tym.setPreferredSize(new Dimension(180,200));
-            tym.setText("test");
-            panelPrzyciskow.add(tym);
+            new dodajElektrownie(rodzajElektrowni, panelPrzyciskow);
         }
         this.revalidate();
         this.repaint();

@@ -15,12 +15,12 @@ public class ElektrowniaWeglowa extends ElektrowniaNaPaliwoStale  {
     }
 
     public ElektrowniaWeglowa(String Nazwa, String Miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow, int LiczbaPracownikow,
-                              Wlasciciel wlasciciel, boolean czyPracuje, String RodzajPaliwa, float ZuzyciePaliwa, int LiczbaBlokow,
+                              Wlasciciel wlasciciel, boolean czyPracuje, String RodzajPaliwa, float ZuzyciePaliwa,
                               DystrybutorPradu DystrybutorPradu, int stanMagazynu, DostawcaWegla DostawcaWegla,
                               int pojemnoscMagazynu, int cenaZakupu, int cenaSprzedazy, int cenaBloku,int kiedyDokupic) {
 
         super(Nazwa, Miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, wlasciciel, czyPracuje, RodzajPaliwa,
-                ZuzyciePaliwa, LiczbaBlokow, DystrybutorPradu, cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic,stanMagazynu,pojemnoscMagazynu);
+                ZuzyciePaliwa, DystrybutorPradu, cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic,stanMagazynu,pojemnoscMagazynu);
         this.DostawcaWegla = DostawcaWegla;
 
         obliczDochodElektrowni = new DochodWeglowa();

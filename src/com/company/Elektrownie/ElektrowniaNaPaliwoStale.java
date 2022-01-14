@@ -9,27 +9,24 @@ public abstract class ElektrowniaNaPaliwoStale extends Elektrownia  {
 
 	private String RodzajPaliwa;
 	private float ZuzyciePaliwa;
-	private int LiczbaBlokow;
 	private int kiedyDokupic;
 
 	public ElektrowniaNaPaliwoStale() {
 		super();
 		this.RodzajPaliwa =" 0";
 		this.ZuzyciePaliwa = 0;
-		this.LiczbaBlokow = 0;
 		this.kiedyDokupic = 0;
 	}
 
 	public ElektrowniaNaPaliwoStale(String Nazwa, String miasto, int MocChwilowa, int MocMaksymalna, int liczbaBlokow,
 									int LiczbaPracownikow, Wlasciciel wlasciciel, boolean czyPracuje, String RodzajPaliwa,
-									float ZuzyciePaliwa, int LiczbaBlokow, DystrybutorPradu Dystrybutor, int cenaZakupu,
+									float ZuzyciePaliwa, DystrybutorPradu Dystrybutor, int cenaZakupu,
 									int cenaSprzedazy, int cenaBloku,int kiedyDokupic,int stanMagazynu, int pojemnoscMagazynu)
 	{
 		super(Nazwa, miasto, MocChwilowa, MocMaksymalna, liczbaBlokow, LiczbaPracownikow, czyPracuje, wlasciciel, Dystrybutor,
 				cenaZakupu, cenaSprzedazy, cenaBloku, kiedyDokupic,stanMagazynu,pojemnoscMagazynu);
 		this.RodzajPaliwa = RodzajPaliwa;
 		this.ZuzyciePaliwa = ZuzyciePaliwa;
-		this.LiczbaBlokow = LiczbaBlokow;
 		this.kiedyDokupic = kiedyDokupic;
 
 	}
@@ -52,21 +49,13 @@ public abstract class ElektrowniaNaPaliwoStale extends Elektrownia  {
 		ZuzyciePaliwa = zuzyciePaliwa;
 	}
 
-	public int getLiczbaBlokow() {
-		return LiczbaBlokow;
-	}
-
-	public void setLiczbaBlokow(int liczbaBlokow) {
-		LiczbaBlokow = liczbaBlokow;
-	}
-
 	public int getKiedyDokupic() { return kiedyDokupic; }
 
 	public void setKiedyDokupic(int kiedyDokupic) { this.kiedyDokupic = kiedyDokupic; }
 
 	public String toString()
 	{
-		return super.toString() + "\nrodzaj paliwa: " + RodzajPaliwa + "\nzuzycie paliwa: " + ZuzyciePaliwa + "\nliczba blokow: " + LiczbaBlokow;
+		return super.toString() + "\nrodzaj paliwa: " + RodzajPaliwa + "\nzuzycie paliwa: " + ZuzyciePaliwa;
 	}
 
 
