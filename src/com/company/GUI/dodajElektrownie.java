@@ -3,13 +3,17 @@ package com.company.GUI;
 import com.company.Elektrownie.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class dodajElektrownie {
     ListyDystrybutorzy dystrybutorzy = new ListyDystrybutorzy();
     ListyWlasciciele wlasciciele = new ListyWlasciciele();
     ListyDostawcy dostawcy = new ListyDostawcy();
     JPanel p = new JPanel();
+
     dodajElektrownie(String rodzajElektrowni, JPanel panel){
+        p.setPreferredSize(new Dimension(520, 240));
+
         JTextField nazwaElektrowni = new JTextField(6);
         JTextField miasto = new JTextField(6);
         JTextField mocChwilowa = new JTextField(6);
@@ -31,27 +35,27 @@ public class dodajElektrownie {
         JTextField zuzyciepaneli = new JTextField(6);
 
 
-        p.add(new JLabel("Nazwa elektrowi: "));
+        p.add(new JLabel("Nazwa elektrowi:"));
         p.add(nazwaElektrowni);
-        p.add(new JLabel("Miasto: "));
+        p.add(new JLabel("Miasto:"));
         p.add(miasto);
-        p.add(new JLabel("Moc chwilowa: "));
+        p.add(new JLabel("Moc chwilowa:"));
         p.add(mocChwilowa);
-        p.add(new JLabel("Moc maksymalna: "));
+        p.add(new JLabel("Moc maksymalna:"));
         p.add(mocMaksymalna);
-        p.add(new JLabel("Liczba blokow: "));
+        p.add(new JLabel("Liczba blokow:"));
         p.add(liczbaBlokow);
-        p.add(new JLabel("Liczba pracownikow: "));
+        p.add(new JLabel("Liczba pracownikow:"));
         p.add(liczbaPracownikow);
-        p.add(new JLabel("Czy pracuje: "));
+        p.add(new JLabel("Czy pracuje:"));
         p.add(czyPracuje);
-        p.add(new JLabel("Cena zakupu: "));
+        p.add(new JLabel("Cena zakupu:"));
         p.add(cenaZakupu);
-        p.add(new JLabel("Cena sprzedazy: "));
+        p.add(new JLabel("Cena sprzedazy:"));
         p.add(cenaSprzedazy);
-        p.add(new JLabel("Cena bloku: "));
+        p.add(new JLabel("Cena bloku:"));
         p.add(cenaBloku);
-        p.add(new JLabel("Kiedy dokupic: "));
+        p.add(new JLabel("Kiedy dokupic:"));
         p.add(kiedyDokupic);
 
 
