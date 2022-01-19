@@ -17,15 +17,14 @@ public class DochodFotowoltaiczna implements ObliczDochodElektrowni, Serializabl
         ElektrowniaFotowoltaiczna ef = (ElektrowniaFotowoltaiczna) e;
 
         ef.setMocMaksymalna(ef.getLiczbaBlokow() * EnergiaProdukowanaPrzezJedenBlok);
-        ef.setZuzyciePaneli(ef.getZuzyciePaneli() + 2);
 
-        while (ef.getZuzyciePaneli() < 100) {
+        if (ef.getZuzyciePaneli() < 100) {
             return
                     //przychod
                     ef.getMocChwilowa() * ef.getDystrybutor().getCenaSkupu() * 12
                             //wydatki
                             - ef.getLiczbaPracownikow() * StawkaGodzinowa * 12;
         }
-        return 0;
+            return 0;
     }
 }

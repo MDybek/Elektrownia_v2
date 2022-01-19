@@ -22,15 +22,16 @@ public class DochodGazowa implements ObliczDochodElektrowni, Serializable {
             eg.setStanMagazynu(eg.getPojemnoscMagazynu());
 
             return  eg.getMocChwilowa()* eg.getDystrybutor().getCenaSkupu()*24
-                    - eg.getMocChwilowa()*(eg.getZuzyciePaliwa()*eg.getDostawcaGazu().getCenaZaM3()
+                    - eg.getMocChwilowa()*eg.getZuzyciePaliwa()*eg.getDostawcaGazu().getCenaZaM3()
                     -eg.getLiczbaPracownikow()*StawkaGodzinowa*24
                     -IloscCO2*eg.getMocChwilowa()*OplataEmisyjna
-                    -eg.getDostawcaGazu().getCenaZaM3()*eg.getPojemnoscMagazynu()-eg.getStanMagazynu());
+                    -eg.getDostawcaGazu().getCenaZaM3()*eg.getPojemnoscMagazynu();
         }
 
-        return  eg.getMocChwilowa()* eg.getDystrybutor().getCenaSkupu()*24
-                - eg.getMocChwilowa()*eg.getZuzyciePaliwa()*eg.getDostawcaGazu().getCenaZaM3()
-                -eg.getLiczbaPracownikow()*StawkaGodzinowa*24
-                -IloscCO2*eg.getMocChwilowa()*OplataEmisyjna;
+            return eg.getMocChwilowa() * eg.getDystrybutor().getCenaSkupu() * 24
+                    - eg.getMocChwilowa() * eg.getZuzyciePaliwa() * eg.getDostawcaGazu().getCenaZaM3()
+                    - eg.getLiczbaPracownikow() * StawkaGodzinowa * 24
+                    - IloscCO2 * eg.getMocChwilowa() * OplataEmisyjna;
+
     }
 }
