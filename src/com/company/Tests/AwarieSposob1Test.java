@@ -3,13 +3,12 @@ package com.company.Tests;
 import com.company.Awarie.ReakcjaNaAwarieZasilania;
 import com.company.Awarie.Sposob1ReakcjaNaAwarieZasilania;
 import com.company.Dochod.DochodGazowa;
-import com.company.Elektrownie.ElektrowniaWeglowa;
-import com.company.Elektrownie.ListyDostawcy;
-import com.company.Elektrownie.ListyDystrybutorzy;
-import com.company.Elektrownie.ListyWlasciciele;
+import com.company.Elektrownie.*;
 import com.company.Head.Gracz;
 import org.junit.Before;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,15 +18,16 @@ public class AwarieSposob1Test {
     ListyDystrybutorzy dystrybutorzy = new ListyDystrybutorzy();
     ListyWlasciciele wlasciciele = new ListyWlasciciele();
     ListyDostawcy dostawcy = new ListyDostawcy();
-    ElektrowniaWeglowa w1 = new ElektrowniaWeglowa("Turów", "Bogatynia", 0, 750, 10, 10,wlasciciele.getWlasciciele().get(0), false, "roksana wegiel", 3f, dystrybutorzy.getDystrybutorzyPradu().get(0), 103, dostawcy.dostawcyWegla.get(0), 190, 50000, 25000, 25000, 10);
+    ElektrowniaWeglowa w1;
     ReakcjaNaAwarieZasilania s1 = new Sposob1ReakcjaNaAwarieZasilania();
     Gracz gracz = new Gracz();
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
         gracz = new Gracz();
+        gracz.setBalans(1000000f);
         w1 = new ElektrowniaWeglowa("Turów", "Bogatynia", 0, 750, 10, 10,wlasciciele.getWlasciciele().get(0), false, "roksana wegiel", 3f, dystrybutorzy.getDystrybutorzyPradu().get(0), 103, dostawcy.dostawcyWegla.get(0), 190, 50000, 25000, 25000, 10);
         w1.setMocChwilowa(w1.getMocMaksymalna());
 
@@ -41,11 +41,14 @@ public class AwarieSposob1Test {
 
         float balans1 = 1000000f - 2000;
 
+        int mocChwilowa = 75*750/100;
+
         s1.ReakcjeNaAwarieZasilania(w1);
 
         assertEquals(bloki1, w1.getLiczbaBlokow(),0.1);
         assertEquals(pracownicy1, w1.getLiczbaPracownikow(), 0.1);
         assertEquals(balans1, gracz.getBalans(), 0.1);
+        assertEquals(mocChwilowa, w1.getMocChwilowa());
 
     }
 }
