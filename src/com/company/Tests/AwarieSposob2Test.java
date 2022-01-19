@@ -2,6 +2,7 @@ package com.company.Tests;
 
 import com.company.Awarie.ReakcjaNaAwarieZasilania;
 import com.company.Awarie.Sposob1ReakcjaNaAwarieZasilania;
+import com.company.Awarie.Sposob2ReakcjaNaAwarieZasilania;
 import com.company.Dochod.DochodGazowa;
 import com.company.Elektrownie.*;
 import com.company.Head.Gracz;
@@ -13,13 +14,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AwarieSposob1Test {
+public class AwarieSposob2Test {
 
     ListyDystrybutorzy dystrybutorzy = new ListyDystrybutorzy();
     ListyWlasciciele wlasciciele = new ListyWlasciciele();
     ListyDostawcy dostawcy = new ListyDostawcy();
     ElektrowniaWeglowa w1;
-    ReakcjaNaAwarieZasilania s1 = new Sposob1ReakcjaNaAwarieZasilania();
+    ReakcjaNaAwarieZasilania s2 = new Sposob2ReakcjaNaAwarieZasilania();
     Gracz gracz = new Gracz();
 
 
@@ -34,20 +35,17 @@ public class AwarieSposob1Test {
     }
 
     @Test
-    public void reakcja1() {
-        int bloki1 = 10-1;
+    public void reakcja2() {
+        int bloki2 = 10-3;
 
-        int pracownicy1 = 10-3;
+        float balans2 = 1000000f - 4000;
 
-        float balans1 = 1000000f - 2000;
+        int mocChwilowa = 50*750/100;
 
-        int mocChwilowa = 75*750/100;
-        s1.ReakcjeNaAwarieZasilania(w1);
+        s2.ReakcjeNaAwarieZasilania(w1);
 
-        assertEquals(bloki1, w1.getLiczbaBlokow(),0.1);
-        assertEquals(pracownicy1, w1.getLiczbaPracownikow(), 0.1);
-        assertEquals(balans1, gracz.getBalans(), 0.1);
+        assertEquals(bloki2, w1.getLiczbaBlokow(),0.1);
+        assertEquals(balans2, gracz.getBalans(), 0.1);
         assertEquals(mocChwilowa, w1.getMocChwilowa());
-
     }
 }
