@@ -23,10 +23,10 @@ public class ListyDostawcy implements Serializable {
     public ArrayList <DostawcaGazu> dostawcyGazu = new ArrayList<>(){
         {
             add( new DostawcaGazu(1,new Wlasciciel()));
-            add( new DostawcaGazu(1.16f,new Wlasciciel()));
-            add( new DostawcaGazu(1.357f,new Wlasciciel()));
-            add( new DostawcaGazu(1.53f,new Wlasciciel()));
-            add( new DostawcaGazu(1.69f,new Wlasciciel()));
+            add( new DostawcaGazu(1.16105f,new Wlasciciel()));
+            add( new DostawcaGazu(1.35747f,new Wlasciciel()));
+            add( new DostawcaGazu(1.53368f,new Wlasciciel()));
+            add( new DostawcaGazu(1.69473f,new Wlasciciel()));
         }
     };
 
