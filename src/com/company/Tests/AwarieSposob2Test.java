@@ -44,8 +44,8 @@ public class AwarieSposob2Test {
 
         s2.ReakcjeNaAwarieZasilania(w1);
 
-        assertEquals(bloki2, w1.getLiczbaBlokow(),0.1);
-        assertEquals(balans2, gracz.getBalans(), 0.1);
+        assertEquals(bloki2, w1.getLiczbaBlokow());
+        assertEquals(balans2, gracz.getBalans());
         assertEquals(mocChwilowa, w1.getMocChwilowa());
     }
 }

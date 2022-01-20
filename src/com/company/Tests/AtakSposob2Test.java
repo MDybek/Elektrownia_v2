@@ -39,8 +39,8 @@ public class AtakSposob2Test {
         int mocChwilowa = 0;
         s2.ReakcjaNaAtakTerrorystyczny(w1);
 
-        assertEquals(pracownicy1, w1.getLiczbaPracownikow(),0.1);
-        assertEquals(balans1, gracz.getBalans(), 0.1);
+        assertEquals(pracownicy1, w1.getLiczbaPracownikow());
+        assertEquals(balans1, gracz.getBalans());
         assertEquals(mocChwilowa, w1.getMocChwilowa());
 
     }
