@@ -44,9 +44,9 @@ public class AwarieSposob1Test {
         int mocChwilowa = 75*750/100;
         s1.ReakcjeNaAwarieZasilania(w1);
 
-        assertEquals(bloki1, w1.getLiczbaBlokow(),0.1);
-        assertEquals(pracownicy1, w1.getLiczbaPracownikow(), 0.1);
-        assertEquals(balans1, gracz.getBalans(), 0.1);
+        assertEquals(bloki1, w1.getLiczbaBlokow());
+        assertEquals(pracownicy1, w1.getLiczbaPracownikow());
+        assertEquals(balans1, gracz.getBalans());
         assertEquals(mocChwilowa, w1.getMocChwilowa());
 
     }
