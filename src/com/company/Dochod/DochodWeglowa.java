@@ -20,7 +20,7 @@ public class DochodWeglowa implements ObliczDochodElektrowni, Serializable {
 
         ew.setMocMaksymalna(ew.getLiczbaBlokow()*EnergiaProdukowanaPrzezJedenBlok);
 
-        if(ew.getStanMagazynu()*100/ew.getStanMagazynu() < ew.getKiedyDokupic()){
+        if(ew.getStanMagazynu()*100/ew.getPojemnoscMagazynu() < ew.getKiedyDokupic()){
             ew.setStanMagazynu(ew.getPojemnoscMagazynu());
 
             return  ew.getMocChwilowa()* ew.getDystrybutor().getCenaSkupu()*24  // dochód
@@ -30,7 +30,7 @@ public class DochodWeglowa implements ObliczDochodElektrowni, Serializable {
                     -ew.getLiczbaPracownikow()*StawkaGodzinowa*24
                     //wydatki na kary emisyjne
                     -IloscCO2*ew.getMocChwilowa()*OplataEmisyjna
-                    -ew.getDostawcaWegla().getCenaZaTone()*ew.getPojemnoscMagazynu()-ew.getStanMagazynu();
+                    -ew.getDostawcaWegla().getCenaZaTone()*ew.getPojemnoscMagazynu();
         }
 
         return  ew.getMocChwilowa()* ew.getDystrybutor().getCenaSkupu()*24  // dochód

@@ -42,6 +42,7 @@ public class AwarieSposob1Test {
         float balans1 = 1000000f - 2000;
 
         int mocChwilowa = 75*750/100;
+
         s1.ReakcjeNaAwarieZasilania(w1);
 
         assertEquals(bloki1, w1.getLiczbaBlokow());

@@ -26,8 +26,6 @@ public class AtakSposob2Test {
         gracz = new Gracz();
         gracz.setBalans(1000000f);
         w1 = new ElektrowniaWeglowa("Turów", "Bogatynia", 0, 750, 10, 10,wlasciciele.getWlasciciele().get(0), false, "roksana wegiel", 3f, dystrybutorzy.getDystrybutorzyPradu().get(0), 103, dostawcy.dostawcyWegla.get(0), 190, 50000, 25000, 25000, 10);
-        w1.setMocChwilowa(w1.getMocMaksymalna());
-
     }
 
     @Test
@@ -37,6 +35,7 @@ public class AtakSposob2Test {
         float balans1 = 1000000f - 3000;
 
         int mocChwilowa = 0;
+
         s2.ReakcjaNaAtakTerrorystyczny(w1);
 
         assertEquals(pracownicy1, w1.getLiczbaPracownikow());
